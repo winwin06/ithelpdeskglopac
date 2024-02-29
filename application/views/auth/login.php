@@ -9,7 +9,7 @@
 
                 <form action="../../index3.html" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email Address">
                     </div>
 
                     <div class="form-group">
@@ -27,7 +27,8 @@
                     <a href="forgot-password.html">Forgot Password?</a>
                 </p>
                 <p class="form-group">
-                    <a href="register.html" class="text-center">Create an Account!</a>
+                    <a class="text-center" href="<?= base_url('index.php/auth/registration') ?>" 
+                    >Create an Account!</a>
                 </p>
             </div>
 
