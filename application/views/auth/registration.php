@@ -9,24 +9,22 @@
 
             <form class="user" method="post" action="<?= base_url('index.php/auth/registration') ?>">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" 
-                    value="<?= set_value('name'); ?>">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="<?= set_value('name'); ?>">
                     <?= form_error('name', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" 
-                    value="<?= set_value('email'); ?>">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
                     <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="password1" name="password1" placeholder="Password">
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
                     <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
                 </div>
 
                 <div class="text-center">
