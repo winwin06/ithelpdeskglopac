@@ -20,13 +20,11 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim
-        |min_length[8]|matches[password2]', [
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
             'matches' => 'Password dont match!',
             'min_length' => 'Password too short!'
         ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|trim|
-        matches[password1]');
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Glopac User Registration';
@@ -39,14 +37,15 @@ class Auth extends CI_Controller
                 'email' => $this->input->post('email'),
                 'password' => password_hash(
                     $this->input->post('password'),
-                    PASSWORD_DEFAULT),
+                    PASSWORD_DEFAULT
+                ),
                 'role' => 2,
                 'created_at' => time(),
                 'updated_at' => time(),
             ];
 
             $this->db->insert('user', $data);
-            redirect('auth');
+            redirect('index.php/auth/login');
         }
     }
 }
