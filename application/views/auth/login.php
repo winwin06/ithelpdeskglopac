@@ -9,11 +9,11 @@
 
                 <form action="../../index3.html" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="text" class="form-control"  id="password" name="password" placeholder="Password">
                     </div>
 
                     <div class="form-group">

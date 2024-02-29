@@ -31,44 +31,38 @@
                 <p class="login-box-msg">Register Now</p>
 
                 <form action="../../index.html" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Full name">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Adress">
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type=" password" class="form-control" id="password2" name="password2" placeholder="Repeat Password">
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block">Register Account</button>
                     </div>
-                    <!-- /.col -->
+
             </div>
             </form>
 
+            <div class="text-center">
+                <p class="form-group">
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="form-group">
+                    <a class="text-center" href="<?= base_url(); ?>auth/login">Already have an
+                        account? Login!</a>
+                </p>
+            </div>
 
-            <a href="login.html" class="text-center">I already have a membership</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->
