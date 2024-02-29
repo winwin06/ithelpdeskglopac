@@ -35,17 +35,16 @@ class Auth extends CI_Controller
             $data = [
                 'name' => $this->input->post('name'),
                 'email' => $this->input->post('email'),
-                'password' => password_hash(
-                    $this->input->post('password'),
-                    PASSWORD_DEFAULT
-                ),
+                'password' => $this->input->post('password1'),
                 'role' => 2,
-                'created_at' => time(),
-                'updated_at' => time(),
+                'created_at' => date('Y-m-d H:i:s'),
+                // 'updated_at' => time(),
             ];
 
             $this->db->insert('user', $data);
-            redirect('index.php/auth/login');
+            //redirect('index.php/auth/login');
         }
+
+        //$this->output->enable_profiler();
     }
 }

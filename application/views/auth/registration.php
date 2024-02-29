@@ -7,7 +7,7 @@
         <div class="card-body register-card-body">
             <p class="login-box-msg">Create an Account</p>
 
-            <form class="user" method="post" action="<?= base_url('index.php/auth/registration') ?>">
+            <form class="user" method="post" action="<?= site_url('auth/registration') ?>">
                 <div class="form-group">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="<?= set_value('name'); ?>">
                     <?= form_error('name', '<small class="text-danger pl-2">', '</small>'); ?>
