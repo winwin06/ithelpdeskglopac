@@ -6,6 +6,6 @@ class Welcome extends CI_Controller
 
 	public function index()
 	{
-		echo "selamat datang user"
+		echo "selamat datang user";
 	}
 }
