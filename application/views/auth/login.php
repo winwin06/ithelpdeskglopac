@@ -11,8 +11,8 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <form class="user" method="post" action="<?= site_url('') ?>">
-                    
+                    <form class="user" method="post" action="<?= site_url('login_c/check_login') ?>">
+
                         <div class="form-group">
                             <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
                             <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>

@@ -36,16 +36,25 @@ class Dashboard extends CI_Controller
 			// jika usernya aktif
 			// if($user['is_active'] == 1) {
 
-			// } else {
-			// 	$this->session->set_flasdata('message', '<div class="alert
-			// 	alert-danger" role="alert">This Email is has been activated!</div>');
-			// 	redirect('');
-			// }
+			// cek password
+			if (password_verify($password, $user['password'])) {
+				// password cocok
+				$data = [
+					'email' => $user['email'],
+					'role'  => $user['role']
+				];
+				$this->session->set_userdata($data);
+				redirect('welcome');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert
+				alert-danger" role="alert">Wrong Password!</div>');
+				redirect('');
+			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert
-		// 	alert-danger" role="alert">Email is not registered!</div>');
+			$this->session->set_flashdata('message', '<div class="alert 
+			alert-danger" role="alert">This email has been not actived!</div>');
+			redirect('');
 		}
-		redirect('welcome');
 	}
 
 
@@ -64,7 +73,7 @@ class Dashboard extends CI_Controller
 			'valid_email' => 'This email has alredy registered!'
 		]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
-			'matches' => 'Password dont match!',
+			'matches'    => 'Password dont match!',
 			'min_length' => 'Password too short!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
@@ -76,16 +85,17 @@ class Dashboard extends CI_Controller
 			$this->load->view('templates/auth_footer');
 		} else {
 			$data = [
-				'name' => $this->input->post('name'),
+				'name'  => $this->input->post('name'),
 				'email' => $this->input->post('email'),
-				'password' => $this->input->post('password1'),
-				'role' => 2,
+				// 'password' => $this->input->post('password1'),
+				'password'   => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'role'       => 2,
 				'created_at' => date('Y-m-d H:i:s'),
 				// 'updated_at' => time(),
 			];
 
 			$this->db->insert('user', $data);
-			$this->session->set_flasdata('message', '<div class="alert alert-success" 
+			$this->session->set_flashdata('message', '<div class="alert alert-success" 
 			role="alert">Congratulation! Your account has been 
 			created. Please Login</div>');
 			redirect('');
