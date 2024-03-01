@@ -7,7 +7,7 @@
         <div class="card-body register-card-body">
             <p class="login-box-msg">Create an Account</p>
 
-            <form class="user" method="post" action="<?= site_url('auth/registration') ?>">
+            <form class="user" method="post" action="<?= site_url('dashboard/registration') ?>">
                 <div class="form-group">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="<?= set_value('name'); ?>">
                     <?= form_error('name', '<small class="text-danger pl-2">', '</small>'); ?>
@@ -40,7 +40,7 @@
         </div>
         <div class="text-center">
             <p class="form-group">
-                <a class="text-center" href="<?= base_url('index.php/auth/login'); ?>">
+                <a class="text-center" href="<?= site_url(''); ?>">
                     Already have an account? Login!</a>
             </p>
         </div>
