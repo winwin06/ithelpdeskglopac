@@ -11,13 +11,16 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <form action="../../index3.html" method="post">
+                    <form class="user" method="post" action="<?= site_url('') ?>">
+                    
                         <div class="form-group">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
+                            <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <?= form_error('password', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
                         <div class="form-group">
