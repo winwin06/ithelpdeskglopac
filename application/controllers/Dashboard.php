@@ -86,8 +86,8 @@ class Dashboard extends CI_Controller
 			$data = [
 				'name'  => $this->input->post('name'),
 				'email' => $this->input->post('email'),
-				// 'password' => $this->input->post('password1'),
-				'password'   => $this->input->post('password1'),
+				'password' => $this->input->post('password1'),
+				// 'password'   => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 				'role'       => 2,
 				'created_at' => date('Y-m-d H:i:s'),
 				// 'updated_at' => time(),
