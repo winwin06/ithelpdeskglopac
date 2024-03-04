@@ -57,7 +57,6 @@ class Dashboard extends CI_Controller
 		}
 	}
 
-
 	public function dashboard()
 	{
 		$this->load->view('templates/header');
