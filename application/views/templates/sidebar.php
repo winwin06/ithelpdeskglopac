@@ -55,27 +55,28 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-cube"></i>
                     <p>Department</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>Job Request</p>
                   </a>
                 </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>Login</p>
-                  </a>
-                </li>
-
-
               </ul>
+
+            <hr class="custom-hr">
+            <li class="nav-item">
+              <div style="margin-top: 200px;">
+                <a href="<?= site_url('') ?>" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Logout</p>
+                </a>
+            </li>
+
         </nav>
         <!-- /.sidebar-menu -->
       </div>

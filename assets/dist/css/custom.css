@@ -3,3 +3,10 @@
     width: 400px;
     margin: 0 auto; */
 }
+
+.custom-hr {
+    margin-top: 2px;
+    /* Atur margin atas */
+    margin-bottom: 2px;
+    /* Atur margin bawah */
+}
