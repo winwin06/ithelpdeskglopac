@@ -57,14 +57,6 @@ class Dashboard extends CI_Controller
 		}
 	}
 
-	public function dashboard()
-	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('dashboard');
-		$this->load->view('templates/footer');
-	}
-
 	public function registration()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -101,5 +93,13 @@ class Dashboard extends CI_Controller
 		}
 
 		// $this->output->enable_profiler();
+	}
+
+	public function dashboard()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('dashboard');
+		$this->load->view('templates/footer');
 	}
 }
