@@ -30,12 +30,21 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
+        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex"> -->
+        <!-- <div class="image">
             <img src="<?= base_url('assets/') ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">PT Glopac Indonesia</a>
+            <a href="#" class="d-block">Glopac Slayy</a>
+          </div>
+        </div> -->
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <i class="fas fa-user-circle fa-2x"></i>
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">Glopac Slayy</a>
           </div>
         </div>
 
@@ -68,9 +77,9 @@
                 </li>
               </ul>
 
-            <hr class="custom-hr">
+              <hr class="custom-hr">
             <li class="nav-item">
-              <div style="margin-top: 200px;">
+              <div style="margin-top: 190px;">
                 <a href="<?= site_url('') ?>" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Logout</p>
