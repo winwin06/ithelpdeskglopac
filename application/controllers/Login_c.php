@@ -34,8 +34,8 @@ class Login_c extends CI_Controller
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('role');
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success"
-		role="alert">You have been logged out!</div');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" 
+			role="alert">You have been logged out</div>');
 		redirect('');
 	}
 }
