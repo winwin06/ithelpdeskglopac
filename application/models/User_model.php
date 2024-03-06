@@ -1,5 +1,5 @@
 <?php
-class User extends CI_Model
+class User_model extends CI_Model
 {
     public function count_record($email, $password)
     {
@@ -12,6 +12,14 @@ class User extends CI_Model
         $this->db->from("user");
         $result = $this->db->get();
         return $result->num_rows();
+    }
+
+    public function index()
+    {
+        $data['data'] = $this->db->get_where('name', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('auth/index');
     }
 
     public function hapus_record()

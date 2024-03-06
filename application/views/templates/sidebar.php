@@ -20,14 +20,15 @@
       <ul class="navbar-nav ml-auto">
         <!-- Dropdown user menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
+          <a class="nav-link" data-toggle="dropdown" href="#" id="userDropdown" role="button">
             <i class="far fa-user"></i>
+            <!-- <i class="right fas fa-angle-right"></i> -->
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">User Options</span>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i>Profile
+              <i class="fas fa-user mr-2"></i>My Profile
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
@@ -38,7 +39,6 @@
         </li>
     </nav>
     <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -60,8 +60,6 @@
               </p>
             </a>
           </li>
-
-
           <li class="nav-header">Department</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -76,7 +74,6 @@
               <p>Job Request</p>
             </a>
           </li>
-
           <li class="nav-header">User</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -84,9 +81,7 @@
               <p>My Profile</p>
             </a>
           </li>
-
           <hr class="mt-5 mb-5">
-
           <li class="nav-item">
             <a href="<?= site_url('') ?>" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -103,3 +98,5 @@
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
+
+    </div>

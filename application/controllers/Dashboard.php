@@ -102,4 +102,13 @@ class Dashboard extends CI_Controller
 		$this->load->view('dashboard');
 		$this->load->view('templates/footer');
 	}
+
+	public function department()
+	{
+		$data['title'] = 'Department';
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('department');
+		$this->load->view('templates/footer');
+		}
 }
