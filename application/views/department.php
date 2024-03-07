@@ -8,17 +8,17 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    
+                    <th>Nama Department</th>
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Trident</td>
-                    <td>Internet
-                        Explorer 4.0
+                    <td>IT
+                        Support
                     </td>
-                    
+
                 </tr>
             </tbody>
         </table>
