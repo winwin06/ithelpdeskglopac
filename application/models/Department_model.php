@@ -1,13 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Department extends CI_Controller {
-	public function index()
+class Department_model extends CI_Model {
+
+	public function get_data($table)
 	{
-		$data['title'] = 'Department';
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('department');
-		$this->load->view('templates/footer');
+		return $this->db->get($table);
 	}
 }

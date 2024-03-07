@@ -52,7 +52,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="<?= site_url('dashboard') ?>" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -62,21 +62,21 @@
           </li>
           <li class="nav-header">Department</li>
           <li class="nav-item">
-            <a href="<?= site_url('department') ?>" class="nav-link">
+            <a href="<?= site_url('dashboard/department') ?>" class="nav-link">
               <i class="nav-icon fas fa-chart-bar"></i>
               <p>Department</p>
             </a>
           </li>
           <li class="nav-header">Job Request</li>
           <li class="nav-item">
-            <a href="<?= site_url('job_request') ?>" class="nav-link">
+            <a href="<?= site_url('dashboard/job_request') ?>" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list"></i>
               <p>Job Request</p>
             </a>
           </li>
-          <li class="nav-header">User</li>
+          <li class="nav-header">My Profile</li>
           <li class="nav-item">
-            <a href="<?= site_url('user') ?>" class="nav-link">
+            <a href="<?= site_url('dashboard/my_profile') ?>" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>My Profile</p>
             </a>

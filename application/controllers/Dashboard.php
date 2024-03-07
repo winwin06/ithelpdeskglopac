@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->model('department_model');
 	}
 
 	public function index()
@@ -106,10 +107,11 @@ class Dashboard extends CI_Controller
 
 	public function department()
 	{
-		$data['title'] = 'Department';
+		$data['title'] 		= 'Department';
+		$data['department'] = $this->department_model->get_data('department')->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('department');
+		$this->load->view('department', $data);
 		$this->load->view('templates/footer');
 	}
 
