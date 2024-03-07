@@ -28,14 +28,4 @@ class Login_c extends CI_Controller
         // $this->output->enable_profiler();
 
     }
-
-    public function logout()
-	{
-		$this->session->unset_userdata('email');
-		$this->session->unset_userdata('role');
-
-        $this->session->set_flashdata('message', '<div class="alert alert-success" 
-			role="alert">You have been logged out</div>');
-		redirect('');
-	}
 }

@@ -97,8 +97,9 @@ class Dashboard extends CI_Controller
 
 	public function dashboard()
 	{
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
+		$data['title'] = 'Dashboard';
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard');
 		$this->load->view('templates/footer');
 	}
@@ -106,9 +107,37 @@ class Dashboard extends CI_Controller
 	public function department()
 	{
 		$data['title'] = 'Department';
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
 		$this->load->view('department');
 		$this->load->view('templates/footer');
-		}
+	}
+
+	public function job_request()
+	{
+		$data['title'] = 'Job Request';
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('job_request');
+		$this->load->view('templates/footer');
+	}
+
+	public function my_profile()
+	{
+		$data['title'] = 'My Profile';
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('my_profile');
+		$this->load->view('templates/footer');
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('role');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" 
+			role="alert">You have been logged out</div>');
+		redirect('');
+	}
 }

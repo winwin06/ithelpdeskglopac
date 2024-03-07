@@ -62,21 +62,21 @@
           </li>
           <li class="nav-header">Department</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= site_url('department') ?>" class="nav-link">
               <i class="nav-icon fas fa-chart-bar"></i>
               <p>Department</p>
             </a>
           </li>
           <li class="nav-header">Job Request</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= site_url('job_request') ?>" class="nav-link">
               <i class="nav-icon fas fa-clipboard-list"></i>
               <p>Job Request</p>
             </a>
           </li>
           <li class="nav-header">User</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= site_url('user') ?>" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>My Profile</p>
             </a>
@@ -95,8 +95,28 @@
   <!-- /.sidebar -->
   </aside>
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark"><?= $title ?></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"><?= $title ?></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+      </div>
