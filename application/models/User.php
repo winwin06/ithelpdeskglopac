@@ -1,5 +1,5 @@
 <?php
-class User_model extends CI_Model
+class User extends CI_Model
 {
     public function count_record($email, $password)
     {

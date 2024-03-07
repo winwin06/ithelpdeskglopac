@@ -32,10 +32,6 @@
                                 <td><?= $us['notes']; ?></td>
                                 <td><?= $us['image']; ?></td>
                                 <td><?= $us['status']; ?></td>
-                                <td>
-                                    <a href="<?= site_url('Prodi/hapus/') . $us['id']; ?>" class="badge badge-danger">Hapus</a>
-                                    <a href="<?= site_url('Prodi/edit/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
-                                </td>
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>
