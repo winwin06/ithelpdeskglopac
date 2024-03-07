@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('department_model');
+		$this->load->model('job_request_model');
 	}
 
 	public function index()
@@ -114,13 +115,14 @@ class Dashboard extends CI_Controller
 		$this->load->view('department', $data);
 		$this->load->view('templates/footer');
 	}
-
+	
 	public function job_request()
 	{
 		$data['title'] = 'Job Request';
+		$data['job_request'] = $this->job_request_model->get_data('job_request')->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('job_request');
+		$this->load->view('job_request', $data);
 		$this->load->view('templates/footer');
 	}
 

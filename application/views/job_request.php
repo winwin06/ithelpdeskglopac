@@ -17,16 +17,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 4.0
-                    </td>
-
-                </tr>
+                <?php $i = 1; ?>
+                <?php foreach ($job_request as $us) : ?>
+                    <tr>
+                        <td> <?= $i; ?>.</td>
+                        <td><?= $us['job_title']; ?></td>
+                        <td><?= $us['job_description']; ?></td>
+                        <td><?= $us['notes']; ?></td>
+                        <td><?= $us['image']; ?></td>
+                        <td><?= $us['status']; ?></td>
+                        <td><?= $us['notes']; ?></td>
+                        <td>
+                            <a href="<?= base_url('job_request/hapus/') . $us['id']; ?>" class="badge badge-danger">Hapus</a>
+                            <a href="<?= base_url('job_request/edit/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
+                            <a href="<?= base_url('job_request/detail/') . $us['id']; ?>" class="badge badge-info">Detail</a>
+                        </td>
+                    </tr>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
