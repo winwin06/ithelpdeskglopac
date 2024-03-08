@@ -36,8 +36,8 @@
                                 <option value="Done">Done</option>
                             </select>
                         </div>
-                        <a href="<?= site_url('dashboard/dashboard') ?>" class="btn btn-danger">Tutup</a>
-                        <button type="submit" name="tambah" class="btn btn-primary float-right">Tambah Job Request</button>
+                        <a href="<?= site_url('dashboard/dashboard') ?>" class="btn btn-danger">Close</a>
+                        <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>
             </div>

@@ -117,8 +117,11 @@ class Dashboard extends CI_Controller
 
 	public function job_request()
 	{
+		$this->load->model('job_request_model');
+
 		$data['title'] = 'Job Request';
-		$data['job_request'] = $this->job_request_model->get_data('job_request')->result();
+		$data['job_request'] = $this->job_request_model->get_data('job_request');
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
