@@ -72,18 +72,17 @@ class Dashboard extends CI_Controller
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
 		if ($this->form_validation->run() == false) {
-			$data['title'] = 'Glopac User Registration';
+			$data['title']	 = 'Glopac User Registration';
 			$this->load->view('templates/auth_header', $data);
 			$this->load->view('auth/registration');
 			$this->load->view('templates/auth_footer');
 		} else {
 			$data = [
-				'name'  => $this->input->post('name'),
-				'email' => $this->input->post('email'),
-				'password' => $this->input->post('password1'),
-				// 'password'   => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-				'role'       => 2,
-				'created_at' => date('Y-m-d H:i:s'),
+				'name'  		=> $this->input->post('name'),
+				'email' 		=> $this->input->post('email'),
+				'password' 		=> $this->input->post('password1'),
+				'role'       	=> 2,
+				'created_at' 	=> date('Y-m-d H:i:s'),
 				// 'updated_at' => time(),
 			];
 
@@ -99,7 +98,7 @@ class Dashboard extends CI_Controller
 
 	public function dashboard()
 	{
-		$data['title'] = 'Dashboard';
+		$data['title'] 	= 'Dashboard';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard');
@@ -115,14 +114,15 @@ class Dashboard extends CI_Controller
 		$this->load->view('department', $data);
 		$this->load->view('templates/footer');
 	}
-	
+
 	public function job_request()
 	{
 		$data['title'] = 'Job Request';
 		$data['job_request'] = $this->job_request_model->get_data('job_request')->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('job_request', $data);
+		$this->load->view('job_request/job_request', $data);
+		$this->load->view('job_request/tambah_job_request', $data);
 		$this->load->view('templates/footer');
 	}
 
