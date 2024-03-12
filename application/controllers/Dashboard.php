@@ -125,7 +125,20 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
-		$this->load->view('job_request/tambah_job_request', $data);
+		$this->load->view('job_request/add_job_request', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function add_job_request()
+	{
+		// $this->load->model('job_request_model');
+
+		$data['title'] = 'Add Job Request';
+		$data['add_job_request'] = $this->job_request_model->get_data('add_job_request');
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('job_request/add_job_request', $data);
 		$this->load->view('templates/footer');
 	}
 
