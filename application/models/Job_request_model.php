@@ -15,22 +15,17 @@ class Job_request_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-	//public function getById($id)
-	//{
-	//$this->db->from($this->table);
-	//$this->db->where('id',$id);
-	//$query = $this->db->get();
-	//return $query->row_array();
-	//}
-	public function getById($id)
-	{
-		$this->db->select('m.*,p.nama as prodi');
-		$this->db->from('mahasiswa m');
-		$this->db->join('prodi p', 'm.prodi = p.id');
-		$this->db->where('m.id', $id);
-		$query = $this->db->get();
-		return $query->row_array();
-	}
+	
+	// public function getById($id)
+	// {
+	// 	$this->db->select('m.*,p.nama as prodi');
+	// 	$this->db->from('mahasiswa m');
+	// 	$this->db->join('prodi p', 'm.prodi = p.id');
+	// 	$this->db->where('m.id', $id);
+	// 	$query = $this->db->get();
+	// 	return $query->row_array();
+	// }
+	
 	public function update($where, $data)
 	{
 		$this->db->update($this->table, $data, $where);
