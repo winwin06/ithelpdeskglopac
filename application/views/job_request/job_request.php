@@ -2,7 +2,7 @@
     <!-- <h1 class="h3 mb-4 text-gray-800"><?php echo $judul; ?></h1> -->
     <div class="row">
         <div class="col-md-6">
-            <a href="<?= site_url() ?>dashboard/job_request_tambah" class="btn btn-info mb-2">Add
+            <a href="<?= site_url() ?>job_request/job_request_tambah" class="btn btn-info mb-2">Add
                 Job Request</a>
         </div>
     <?= $this->session->flashdata('message') ?>
