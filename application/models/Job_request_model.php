@@ -1,6 +1,6 @@
 <?php
-defined('BASEPATH') or exit('No direct script access
-allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class Job_request_model extends CI_Model
 {
 	public $table = 'job_request';

@@ -3,7 +3,7 @@
         <div class="col-md-8 ">
             <div class="card">
                 <div class="card-header justify-content-center">
-                    Form Tambah Data Job Request
+                    Form Data Job Request
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">
@@ -37,7 +37,7 @@
                             </select>
                         </div>
                         <a href="<?= site_url('dashboard/dashboard') ?>" class="btn btn-danger">Close</a>
-                        <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
+                        <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-primary float-right">Submit</a>
                     </form>
                 </div>
             </div>
