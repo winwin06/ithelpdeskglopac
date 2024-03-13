@@ -117,8 +117,6 @@ class Dashboard extends CI_Controller
 
 	public function job_request()
 	{
-		$this->load->model('job_request_model');
-
 		$data['title'] = 'Job Request';
 		$data['job_request'] = $this->job_request_model->get_data('job_request');
 
@@ -130,8 +128,6 @@ class Dashboard extends CI_Controller
 
 	public function create_job_request()
 	{
-		// $this->load->model('job_request_model');
-
 		$data['title'] = 'Create Job Request';
 		$data['create_job_request'] = $this->job_request_model->get_data('create_job_request');
 
