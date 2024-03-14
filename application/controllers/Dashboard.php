@@ -117,8 +117,8 @@ class Dashboard extends CI_Controller
 
 	public function job_request()
 	{
-		$data['title'] = 'Job Request';
-		$data['job_request'] = $this->job_request_model->get_data('job_request');
+		$data['title'] 			= 'Job Request';
+		$data['job_request'] 	= $this->job_request_model->get_data('job_request');
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -128,12 +128,56 @@ class Dashboard extends CI_Controller
 
 	public function create_job_request()
 	{
-		$data['title'] = 'Create Job Request';
+		$data['title'] 				= 'Create Job Request';
 		$data['create_job_request'] = $this->job_request_model->get_data('create_job_request');
 
+		// $data['user']   = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		// $data['job_request'] = $this->job_request_model->get();
+		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
+		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
+		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
+		$this->form_validation->set_rules('image', 'Image', 'required|trim');
+		$this->form_validation->set_rules('status', 'Status', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('job_request/create_job_request', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$data = [
+				'job_title'         => $this->input->post('job_title'),
+				'job_description'   => $this->input->post('job_description'),
+				'notes'             => $this->input->post('notes'),
+				'image'             => $this->input->post('image'),
+				'status'            => $this->input->post('status'),
+			];
+			$this->job_request_model->insert($data);
+			$this->session->set_flashdata('message', '<div class="alert alert-success"
+            role="alert">Job Request Successfully Added!</div>');
+			redirect('job_request');
+		}
+	}
+
+	// $data['id']		 = $this->job_request_model->getJobRequestById('$id');
+
+	// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata['email']])->row_array();
+	public function detail_job_request($id)
+	{
+		$data['title'] 			= "Detail Job Request";
+		$data['job_request'] 	= $this->job_request_model->getJobRequestById($id);
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar');
+		$this->load->view('job_request/detail_job_request', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function edit_job_request()
+	{
+		$data['title'] = 'Edit Job Request';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('job_request/create_job_request', $data);
+		$this->load->view('job_request/edit_job_request', $data);
 		$this->load->view('templates/footer');
 	}
 

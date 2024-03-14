@@ -34,7 +34,7 @@
                             <td><?= $us['image']; ?></td>
                             <td><?= $us['status']; ?></td>
                             <td>
-                                <a href="<?= site_url('job_request/detail/') . $us['id']; ?>" class="badge badge-info">Detail</a>
+                                <a href="<?= site_url('dashboard/detail_job_request/'). $us['id']; ?>" class="badge badge-info">Detail</a>
                                 <a href="<?= site_url('job_request/edit/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
                                 <a href="<?= site_url('job_request/delete/') . $us['id']; ?>" class="badge badge-danger">Delete</a>
                             </td>
