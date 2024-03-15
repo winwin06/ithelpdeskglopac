@@ -165,7 +165,7 @@ class Dashboard extends CI_Controller
 			redirect('dashboard/job_request');
 		}
 	}
-	
+
 	public function delete_job_request($id)
 	{
 		$this->job_request_model->delete($id);
@@ -183,13 +183,46 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function edit_job_request()
+	public function edit_job_request($id)
 	{
-		$data['title'] = 'Edit Job Request';
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('job_request/edit_job_request', $data);
-		$this->load->view('templates/footer');
+		$data['title'] 			= "Edit Job Request";
+		$data['job_request'] 	= $this->job_request_model->getJobRequestById($id);
+		$data['status']			=['Not Started', 'On Going', 'Done'];
+		
+		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
+		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
+		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
+		$this->form_validation->set_rules('status', 'Status', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('job_request/edit_job_request', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$data = [
+				'job_title'         => $this->input->post('job_title'),
+				'job_description'   => $this->input->post('job_description'),
+				'notes'             => $this->input->post('notes'),
+				'status'            => $this->input->post('status'),
+			];
+			$upload_image = $_FILES['image']['name'];
+			if ($upload_image) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = '2048';
+				$config['upload_path'] = './assets/dist/img/glopac/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('image')) {
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('image', $new_image);
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+			$this->job_request_model->update($data);
+			$this->session->set_flashdata('flash', 'Diupdate');
+			redirect('dashboard/job_request');
+		}
 	}
 
 	public function my_profile()
