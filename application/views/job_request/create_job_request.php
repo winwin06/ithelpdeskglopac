@@ -6,6 +6,7 @@
                     Form Data Job Request
                 </div>
                 <div class="card-body">
+
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="job_title">Job Title</label>
@@ -23,9 +24,11 @@
                             <?= form_error('notes', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="image">Image</label>
-                            <input type="text" name="image" value="<?= set_value('image'); ?>" class="form-control" id="image" placeholder="Image">
-                            <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label for="gambar">Image</label>
+                            <div class="custom-file">
+                                <input type="file" name="image" class="custom-file-input" id="image">
+                                <label for="image">Choose File</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
@@ -36,8 +39,8 @@
                                 <option value="Done">Done</option>
                             </select>
                         </div>
-                        <a href="<?= site_url('dashboard/dashboard') ?>" class="btn btn-danger">Close</a>
-                        <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-primary float-right">Submit</a>
+                        <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-danger">Close</a>
+                        <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>
             </div>

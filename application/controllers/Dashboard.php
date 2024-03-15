@@ -126,48 +126,13 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	// public function create_job_request()
-	// {
-	// 	$data['title'] 				= 'Create Job Request';
-	// 	$data['create_job_request'] = $this->job_request_model->getJobRequest('create_job_request');
-
-	// 	$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
-	// 	$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
-	// 	$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
-	// 	$this->form_validation->set_rules('image', 'Image', 'required|trim');
-	// 	$this->form_validation->set_rules('status', 'Status', 'required|trim');
-
-	// 	if ($this->form_validation->run() == false) {
-	// 		$this->load->view('templates/header', $data);
-	// 		$this->load->view('templates/sidebar', $data);
-	// 		$this->load->view('job_request/create_job_request', $data);
-	// 		$this->load->view('templates/footer');
-	// 	} else {
-	// 		$data = [
-	// 			'job_title'         => $this->input->post('job_title'),
-	// 			'job_description'   => $this->input->post('job_description'),
-	// 			'notes'             => $this->input->post('notes'),
-	// 			'image'             => $this->input->post('image'),
-	// 			'status'            => $this->input->post('status'),
-	// 		];
-	// 		$this->job_request_model->insert($data);
-	// 		$this->session->set_flashdata('message', '<div class="alert alert-success"
-	//         role="alert">Job Request Successfully Added!</div>');
-	// 		redirect('job_request');
-	// 	}
-	// }
-
 	public function create_job_request()
 	{
-		$data['title'] 					= "Create Job Request";
-		// $data['create_job_request'] 	= $this->job_request_model->insert($data);
-		// $data['create_job_request'] = $this->job_request_model->insert('create_job_request');
-
-		// Validasi form
+		$data['title'] = "Create Job Request";
+		
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
-		$this->form_validation->set_rules('image', 'Image', 'required|trim');
 		$this->form_validation->set_rules('status', 'Status', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
@@ -176,19 +141,27 @@ class Dashboard extends CI_Controller
 			$this->load->view('job_request/create_job_request', $data);
 			$this->load->view('templates/footer');
 		} else {
-			// Mendapatkan data dari form
 			$data = [
 				'job_title'         => $this->input->post('job_title'),
 				'job_description'   => $this->input->post('job_description'),
 				'notes'             => $this->input->post('notes'),
-				'image'             => $this->input->post('image'),
 				'status'            => $this->input->post('status'),
 			];
-
-			// Memasukkan data ke dalam tabel
+			$upload_image = $_FILES['image']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = '2048';
+                $config['upload_path'] = './assets/dist/img/glopac/';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('image')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
 			$this->job_request_model->insert($data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Job Request Successfully Added!</div>');
-			redirect('job_request'); // Arahkan kembali ke halaman "job_request" setelah penyimpanan berhasil
+			redirect('dashboard/job_request'); 
 		}
 	}
 

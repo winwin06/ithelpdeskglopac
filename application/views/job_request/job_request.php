@@ -31,10 +31,10 @@
                             <td><?= $us['job_title']; ?></td>
                             <td><?= $us['job_description']; ?></td>
                             <td><?= $us['notes']; ?></td>
-                            <td><?= $us['image']; ?></td>
+                            <td><img src="<?= site_url('assets/dist/img/glopac.png/') . $us['image']; ?>" style="width: 100px;" class="img-thumbnail"></td>
                             <td><?= $us['status']; ?></td>
                             <td>
-                                <a href="<?= site_url('dashboard/detail_job_request/'). $us['id']; ?>" class="badge badge-info">Detail</a>
+                                <a href="<?= site_url('dashboard/detail_job_request/') . $us['id']; ?>" class="badge badge-info">Detail</a>
                                 <a href="<?= site_url('dashboard/edit_job_request/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
                                 <a href="<?= site_url('dashboard/delete_job_request/') . $us['id']; ?>" class="badge badge-danger">Delete</a>
                             </td>
