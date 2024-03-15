@@ -19,14 +19,26 @@ class Job_request_model extends CI_Model
 
 	public function getJobRequestById($id)
 	{
-    	$this->db->where($this->id, $id);
-    	return $this->db->get($this->table)->row_array();
+		$this->db->where($this->id, $id);
+		return $this->db->get($this->table)->row_array();
 	}
 
 	public function insert($data)
 	{
-	$this->db->insert($this->table, $data);
-	return $this->db->insert_id();
+		$this->db->insert($this->table, $data);
+		return $this->db->insert_id();
+	}
+
+	public function update($where, $data)
+    {
+        $this->db->update($this->table, $data, $where);
+        return $this->db->affected_rows();
+    }
+
+	public function delete($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('job_request');
 	}
 }
 
@@ -49,4 +61,3 @@ class Job_request_model extends CI_Model
 	// 	$this->db->delete($this->table);
 	// 	return $this->db->affected_rows();
 	// }
-

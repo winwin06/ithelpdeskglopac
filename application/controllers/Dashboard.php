@@ -129,7 +129,7 @@ class Dashboard extends CI_Controller
 	public function create_job_request()
 	{
 		$data['title'] = "Create Job Request";
-		
+
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
@@ -148,21 +148,29 @@ class Dashboard extends CI_Controller
 				'status'            => $this->input->post('status'),
 			];
 			$upload_image = $_FILES['image']['name'];
-            if ($upload_image) {
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '2048';
-                $config['upload_path'] = './assets/dist/img/glopac/';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('image')) {
-                    $new_image = $this->upload->data('file_name');
-                    $this->db->set('image', $new_image);
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
+			if ($upload_image) {
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = '2048';
+				$config['upload_path'] = './assets/dist/img/glopac/';
+				$this->load->library('upload', $config);
+				if ($this->upload->do_upload('image')) {
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('image', $new_image);
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
 			$this->job_request_model->insert($data);
-			redirect('dashboard/job_request'); 
+			$this->session->set_flashdata('flash', 'Ditambahkan');
+			redirect('dashboard/job_request');
 		}
+	}
+	
+	public function delete_job_request($id)
+	{
+		$this->job_request_model->delete($id);
+		$this->session->set_flashdata('flash', 'Dihapus');
+		redirect('dashboard/job_request');
 	}
 
 	public function detail_job_request($id)
