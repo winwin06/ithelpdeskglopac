@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Data Job Request <strong>Succes</strong> <?= $this->session->flashdata('flash'); ?>
+                    Job Request Data <strong>Succes</strong> <?= $this->session->flashdata('flash'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="<?= site_url('dashboard/create_job_request') ?>" class="btn btn-info mb-2">Create Job Request</a>
+            <a href="<?= site_url('dashboard/create_job_request') ?>" class="btn btn-info mb-2">Add a Job Request</a>
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>
@@ -45,7 +45,7 @@
                             <td><?= $us['job_title']; ?></td>
                             <td><?= $us['job_description']; ?></td>
                             <td><?= $us['notes']; ?></td>
-                            <td><img src="<?= site_url('assets/dist/img/glopac.png/') . $us['image']; ?>" style="width: 100px;" class="img-thumbnail"></td>
+                            <td><img src="<?= base_url('assets/dist/img/job_request/') . $us['image']; ?>" style="width: 100px;" class="img-thumbnail"></td>
                             <td><?= $us['status']; ?></td>
                             <td>
                                 <a href="<?= site_url('dashboard/detail_job_request/') . $us['id']; ?>" class="badge badge-info">Detail</a>

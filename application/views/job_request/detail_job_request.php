@@ -24,8 +24,15 @@
                     <div class="row">
                         <div class="col-md-4">Image</div>
                         <div class="col-md-2">:</div>
-                        <div class="col-md-6"><?= $job_request['image']; ?></div>
+                        <div class="col-md-6">
+                            <?php if ($job_request['image']): ?>
+                                <img src="<?= base_url('assets/dist/img/job_request/') . $job_request['image']; ?>" style="width: 100px;" class="img-thumbnail">
+                            <?php else: ?>
+                                No Image
+                            <?php endif; ?>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-4">Status</div>
                         <div class="col-md-2">:</div>

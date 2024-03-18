@@ -3,11 +3,11 @@
         <div class="col-md-8 ">
             <div class="card">
                 <div class="card-header justify-content-center">
-                    Form Data Job Request
+                    Add Job Request Form
                 </div>
                 <div class="card-body">
 
-                    <form action="" method="POST">
+                    <form action="<?= site_url('dashboard/create_job_request'); ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="job_title">Job Title</label>
                             <input type="text" name="job_title" value="<?= set_value('job_title'); ?>" class="form-control" id="job_title" placeholder="Job Title">
@@ -24,16 +24,17 @@
                             <?= form_error('notes', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="gambar">Image</label>
+                            <label for="image">Image</label>
                             <div class="custom-file">
                                 <input type="file" name="image" class="custom-file-input" id="image">
-                                <label for="image">Choose File</label>
+                                <label for="image" class="custom-file-label">Choose File</label>
+                                <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" value="<?= set_value('status'); ?>" id="status" class="form-control">
-                                <option value="">Status</option>
+                                <option value="Not Started"></option>
                                 <option value="Not Started">Not Started</option>
                                 <option value="On Going">On Going</option>
                                 <option value="Done">Done</option>

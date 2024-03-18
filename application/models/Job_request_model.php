@@ -28,11 +28,11 @@ class Job_request_model extends CI_Model
 		$this->db->insert($this->table, $data);
 		return $this->db->insert_id();
 	}
-
-	public function update($data)
+	
+	public function update($where, $data)
 	{
 		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('job_request', $data);
+		$this->db->update('job_request', $data, $where);
 	}
 
 	public function delete($id)
