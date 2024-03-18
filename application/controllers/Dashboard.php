@@ -151,7 +151,7 @@ class Dashboard extends CI_Controller
 			$upload_image = $_FILES['image']['name'];
 			if ($upload_image) {
 				$config['allowed_types'] = 'gif|jpg|jpeg|png';
-				$config['max_size'] = '10M';
+				$config['max_size'] = '10240';
 				$config['upload_path'] = './assets/dist/img/job_request/';
 
 				// Pastikan direktori upload ada dan memiliki izin yang sesuai
@@ -219,7 +219,7 @@ class Dashboard extends CI_Controller
 			$upload_image = $_FILES['image']['name'];
 			if ($upload_image) {
 				$config['allowed_types'] = 'gif|jpg|jpeg|png';
-				$config['max_size'] = '2048';
+				$config['max_size'] = '10240';
 				$config['upload_path'] = './assets/dist/img/job_request/';
 
 				$this->load->library('upload', $config);
