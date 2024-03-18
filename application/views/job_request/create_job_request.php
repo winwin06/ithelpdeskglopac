@@ -26,15 +26,14 @@
                         <div class="form-group">
                             <label for="image">Image</label>
                             <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input" id="image">
-                                <label for="image" class="custom-file-label">Choose File</label>
+                                <input type="file" name="image" class="form-control" id="image" accept="image/*">
                                 <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" value="<?= set_value('status'); ?>" id="status" class="form-control">
-                                <option value="Not Started"></option>
+                                <option value="">--Status--</option>
                                 <option value="Not Started">Not Started</option>
                                 <option value="On Going">On Going</option>
                                 <option value="Done">Done</option>

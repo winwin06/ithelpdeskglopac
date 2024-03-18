@@ -126,46 +126,6 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	// function create_job_request()
-	// {
-	// 	$data['title'] = "Add a Job Request";
-
-	// 	$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
-	// 	$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
-	// 	$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
-	// 	$this->form_validation->set_rules('status', 'Status', 'required|trim');
-
-	// 	if ($this->form_validation->run() == false) {
-	// 		$this->load->view('templates/header', $data);
-	// 		$this->load->view('templates/sidebar', $data);
-	// 		$this->load->view('job_request/create_job_request', $data);
-	// 		$this->load->view('templates/footer');
-	// 	} else {
-	// 		$data = [
-	// 			'job_title'         => $this->input->post('job_title'),
-	// 			'job_description'   => $this->input->post('job_description'),
-	// 			'notes'             => $this->input->post('notes'),
-	// 			'status'            => $this->input->post('status'),
-	// 		];
-	// 		$upload_image = $_FILES['image']['name'];
-	// 		if ($upload_image) {
-	// 			$config['allowed_types'] = 'gif|jpg|jpeg|apng';
-	// 			$config['max_size'] = '2048';
-	// 			$config['upload_path'] = './assets/dist/img/job_request/';
-	// 			$this->load->library('upload', $config);
-	// 			if ($this->upload->do_upload('image')) {
-	// 				$new_image = $this->upload->data('file_name');
-	// 				$this->db->set('image', $new_image);
-	// 			} else {
-	// 				echo $this->upload->display_errors();
-	// 			}
-	// 		}
-	// 		$this->job_request_model->insert($data);
-	// 		$this->session->set_flashdata('flash', 'Ditambahkan');
-	// 		redirect('dashboard/job_request');
-	// 	}
-	// }
-
 	public function create_job_request()
 	{
 		$data['title'] = "Add a Job Request";
@@ -190,8 +150,8 @@ class Dashboard extends CI_Controller
 
 			$upload_image = $_FILES['image']['name'];
 			if ($upload_image) {
-				$config['allowed_types'] = 'gif|jpg|jpeg|png'; 
-				$config['max_size'] = '2048';
+				$config['allowed_types'] = 'gif|jpg|jpeg|png';
+				$config['max_size'] = '10M';
 				$config['upload_path'] = './assets/dist/img/job_request/';
 
 				// Pastikan direktori upload ada dan memiliki izin yang sesuai
@@ -235,9 +195,9 @@ class Dashboard extends CI_Controller
 
 	public function edit_job_request($id)
 	{
-		$data['title'] 			= "Edit Job Request Data";
-		$data['job_request'] 	= $this->job_request_model->getJobRequestById($id);
-		$data['status']			= ['Not Started', 'On Going', 'Done'];
+		$data['title'] = "Edit Job Request Data";
+		$data['job_request'] = $this->job_request_model->getJobRequestById($id);
+		$data['status'] = ['Not Started', 'On Going', 'Done'];
 
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
@@ -251,30 +211,32 @@ class Dashboard extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$data = [
-				'job_title'         => $this->input->post('job_title'),
-				'job_description'   => $this->input->post('job_description'),
-				'notes'             => $this->input->post('notes'),
-				'status'            => $this->input->post('status'),
+				'job_title' => $this->input->post('job_title'),
+				'job_description' => $this->input->post('job_description'),
+				'notes' => $this->input->post('notes'),
+				'status' => $this->input->post('status'),
 			];
 			$upload_image = $_FILES['image']['name'];
 			if ($upload_image) {
-				$config['allowed_types'] = 'gif|jpg|png';
+				$config['allowed_types'] = 'gif|jpg|jpeg|png';
 				$config['max_size'] = '2048';
-				$config['upload_path'] = './assets/dist/img/glopac/';
+				$config['upload_path'] = './assets/dist/img/job_request/';
+
 				$this->load->library('upload', $config);
+
 				if ($this->upload->do_upload('image')) {
 					$old_image = $data['job_request']['image'];
 					if ($old_image != 'default.jpg') {
-						unlink(FCPATH . 'assets/dist/img/glopac.png/' . $old_image);
+						unlink(FCPATH . 'assets/dist/img/job_request/' . $old_image);
 					}
 					$new_image = $this->upload->data('file_name');
-					$this->db->set('image', $new_image);
+					$data['image'] = $new_image;
 				} else {
 					echo $this->upload->display_errors();
+					return;
 				}
 			}
-			$id = $this->input->post('id');
-			$this->job_request_model->update(['id' => $id], $data, $upload_image);
+			$this->job_request_model->update(['id' => $id], $data);
 			$this->session->set_flashdata('flash', 'Diupdate');
 			redirect('dashboard/job_request');
 		}

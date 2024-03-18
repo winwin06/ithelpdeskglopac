@@ -28,8 +28,7 @@
                             <label for="image">Image</label>
                             <img src="<?= base_url('assets/dist/img/job_request/') . $job_request['image']; ?>" style="width: 100px;" class="img-thumbnail">
                             <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input" id="image">
-                                <label for="image" class="custom-file-label">Choose File</label>
+                                <input type="file" name="image" class="form-control" id="image">
                                 <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             </img>
