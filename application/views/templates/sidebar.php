@@ -60,13 +60,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">Department</li>
-          <li class="nav-item">
-            <a href="<?= site_url('dashboard/department') ?>" class="nav-link">
-              <i class="nav-icon fas fa-chart-bar"></i>
-              <p>Department</p>
-            </a>
-          </li>
+
           <li class="nav-header">Job Request</li>
           <li class="nav-item">
             <a href="<?= site_url('dashboard/job_request') ?>" class="nav-link">
@@ -119,4 +113,4 @@
     <section class="content">
       <div class="container-fluid">
 
-      </div>
+              </div>
