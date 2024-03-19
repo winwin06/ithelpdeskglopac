@@ -7,8 +7,8 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->model('department_model');
 		$this->load->model('job_request_model');
+		$this->load->model('user');
 	}
 
 	public function index()
@@ -28,8 +28,8 @@ class Dashboard extends CI_Controller
 
 	private function _login()
 	{
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+		$email 		= $this->input->post('email');
+		$password 	= $this->input->post('password');
 
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
 
@@ -102,16 +102,6 @@ class Dashboard extends CI_Controller
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard');
-		$this->load->view('templates/footer');
-	}
-
-	public function department()
-	{
-		$data['title'] 		= 'Department';
-		$data['department'] = $this->department_model->get_data('department')->result();
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('department', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -246,15 +236,6 @@ class Dashboard extends CI_Controller
 		}
 	}
 
-	public function my_profile()
-	{
-		$data['title'] = 'My Profile';
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('my_profile');
-		$this->load->view('templates/footer');
-	}
-
 	public function logout()
 	{
 		$this->session->unset_userdata('email');
@@ -264,4 +245,18 @@ class Dashboard extends CI_Controller
 			role="alert">You have been logged out</div>');
 		redirect('');
 	}
+
+	public function my_profile()
+	{
+		$this->load->model('user'); // Load model User
+
+		$data['title'] = 'My Profile';
+		$data['user'] = $this->user->get_user_details(); // Mengambil data pengguna dari model
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('my_profile', $data);
+		$this->load->view('templates/footer');
+	}
+
 }

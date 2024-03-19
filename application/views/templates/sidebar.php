@@ -16,6 +16,7 @@
         </li>
       </ul>
 
+      <!-- Sidebar -->
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Dropdown user menu -->
@@ -26,12 +27,13 @@
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">User Options</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <div class="dropdown-divider">
+            </div>
+            <a href="<?= site_url('dashboard/my_profile') ?>" class="dropdown-item">
               <i class="fas fa-user mr-2"></i>My Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="<?= site_url('dashboard') ?>" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
               </i>
             </a>
@@ -75,6 +77,7 @@
               <p>My Profile</p>
             </a>
           </li>
+
           <hr class="mt-5 mb-5">
           <li class="nav-item">
             <a href="<?= site_url('') ?>" class="nav-link">
@@ -97,6 +100,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark"><?= $title ?></h1>
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -112,5 +116,4 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
-              </div>
+      </div>

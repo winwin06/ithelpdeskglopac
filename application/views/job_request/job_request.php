@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="<?= site_url('dashboard/create_job_request') ?>" class="btn btn-info mb-2">Add a Job Request</a>
+            <a href="<?= site_url('dashboard/create_job_request') ?>" class="btn btn-info mb-2">Create</a>
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>

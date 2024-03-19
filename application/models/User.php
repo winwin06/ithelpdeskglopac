@@ -19,7 +19,7 @@ class User extends CI_Model
         $data['data'] = $this->db->get_where('name', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $this->load->view('auth/index');
+        $this->load->view('auth/index', $data);
     }
 
     public function hapus_record()
@@ -33,4 +33,12 @@ class User extends CI_Model
     public function kosongkan_table()
     {
     }
+
+    public function get_user_details()
+    {
+        $email = $this->session->userdata('email');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        return $user;
+    }
+
 }
