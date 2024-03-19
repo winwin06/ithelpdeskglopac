@@ -132,6 +132,7 @@ class Dashboard extends CI_Controller
 
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
+		$this->form_validation->set_rules('department', 'Department', 'required|trim');
 		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
 		$this->form_validation->set_rules('status', 'Status', 'required|trim');
 
@@ -144,6 +145,7 @@ class Dashboard extends CI_Controller
 			$data = [
 				'job_title'         => $this->input->post('job_title'),
 				'job_description'   => $this->input->post('job_description'),
+				'department'	   	=> $this->input->post('department'),
 				'notes'             => $this->input->post('notes'),
 				'status'            => $this->input->post('status'),
 			];
@@ -201,6 +203,7 @@ class Dashboard extends CI_Controller
 
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
+		$this->form_validation->set_rules('department', 'Department', 'required|trim');
 		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
 		$this->form_validation->set_rules('status', 'Status', 'required|trim');
 
@@ -213,6 +216,7 @@ class Dashboard extends CI_Controller
 			$data = [
 				'job_title' => $this->input->post('job_title'),
 				'job_description' => $this->input->post('job_description'),
+				'department' => $this->input->post('department'),
 				'notes' => $this->input->post('notes'),
 				'status' => $this->input->post('status'),
 			];

@@ -19,6 +19,11 @@
                             <?= form_error('job_description', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" name="department" value="<?= set_value('department'); ?>" class="form-control" id="department" placeholder="Department">
+                            <?= form_error('department', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
                             <label for="notes">Notes</label>
                             <input type="text" name="notes" value="<?= set_value('notes'); ?>" class="form-control" id="notes" placeholder="Notes">
                             <?= form_error('notes', '<small class="text-danger pl-3">', '</small>'); ?>

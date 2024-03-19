@@ -31,6 +31,7 @@
                         <th>No</th>
                         <th>Job Title</th>
                         <th>Job Description</th>
+                        <th>Department</th>
                         <th>Notes</th>
                         <th>Image</th>
                         <th>Status</th>
@@ -44,6 +45,7 @@
                             <td><?= $i; ?>.</td>
                             <td><?= $us['job_title']; ?></td>
                             <td><?= $us['job_description']; ?></td>
+                            <td><?= $us['department']; ?></td>
                             <td><?= $us['notes']; ?></td>
                             <td><img src="<?= base_url('assets/dist/img/job_request/') . $us['image']; ?>" style="width: 100px;" class="img-thumbnail"></td>
                             <td><?= $us['status']; ?></td>
