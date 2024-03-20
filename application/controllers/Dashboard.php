@@ -248,15 +248,12 @@ class Dashboard extends CI_Controller
 
 	public function my_profile()
 	{
-		$this->load->model('user'); // Load model User
-
-		$data['title'] = 'My Profile';
-		$data['user'] = $this->user->get_user_details(); // Mengambil data pengguna dari model
+		$data['title'] = "My Profile";
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('my_profile', $data);
 		$this->load->view('templates/footer');
 	}
-
 }

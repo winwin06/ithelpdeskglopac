@@ -27,17 +27,16 @@
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">User Options</span>
-            <div class="dropdown-divider">
-            </div>
+            <div class="dropdown-divider"></div>
             <a href="<?= site_url('dashboard/my_profile') ?>" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i>My Profile
+                <i class="fas fa-user mr-2"></i>My Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a href="<?= site_url('dashboard') ?>" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
-              </i>
+            <a href="<?= site_url('dashboard') ?>" class="dropdown-item" onclick="return confirm('Are you sure you want to sign out?');">
+                <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
             </a>
-          </div>
+        </div>
+
         </li>
     </nav>
     <!-- /.navbar -->
@@ -72,7 +71,7 @@
           </li>
           <li class="nav-header">My Profile</li>
           <li class="nav-item">
-            <a href="<?= site_url('dashboard/my_profile') ?>" class="nav-link">
+            <a href="<?= site_url('dashboard/my_profile/') ?>" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>My Profile</p>
             </a>
@@ -80,11 +79,12 @@
 
           <hr class="mt-5 mb-5">
           <li class="nav-item">
-            <a href="<?= site_url('') ?>" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
+              <a href="<?= site_url('') ?>" class="nav-link" onclick="return confirm('Are you sure you want to logout?');">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Logout</p>
+              </a>
           </li>
+
 
       </nav>
       <!-- /.sidebar-menu -->

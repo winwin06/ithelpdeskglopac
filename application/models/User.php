@@ -34,11 +34,4 @@ class User extends CI_Model
     {
     }
 
-    public function get_user_details()
-    {
-        $email = $this->session->userdata('email');
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        return $user;
-    }
-
 }
