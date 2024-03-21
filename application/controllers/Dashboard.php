@@ -250,6 +250,7 @@ class Dashboard extends CI_Controller
 	public function my_profile()
 	{
 		$data['title']	= "My Profile";
+
 		// $data['user']	= $this->userrole->getBy();
 
 		$this->load->view('templates/header', $data);
