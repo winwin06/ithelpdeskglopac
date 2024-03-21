@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('job_request_model');
-		$this->load->model('user');
+		$this->load->model('user', 'userrole');
 	}
 
 	public function index()
@@ -32,21 +32,19 @@ class Dashboard extends CI_Controller
 		$password 	= $this->input->post('password');
 
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-		// jika usernya ada 
 		if ($user) {
-			// jika usernya aktif
-			// if($user['is_active'] == 1) {
-
-			// cek password
 			if (password_verify($password, $user['password'])) {
-				// password cocok
 				$data = [
 					'email' => $user['email'],
-					'role'  => $user['role']
+					'role'  => $user['role'],
+					'id'	=> $user['id']
 				];
 				$this->session->set_userdata($data);
-				redirect('welcome');
+				if ($user['role'] == '1') {
+					redirect('dashboard/job_request');
+				} else if ($user['role'] == '2') {
+					redirect('dashboard');
+				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert
 				alert-danger" role="alert">Wrong Password!</div>');
@@ -81,7 +79,7 @@ class Dashboard extends CI_Controller
 				'name'  		=> $this->input->post('name'),
 				'email' 		=> $this->input->post('email'),
 				'password' 		=> $this->input->post('password1'),
-				'role'       	=> 2,
+				'role'       	=> 1,
 				'created_at' 	=> date('Y-m-d H:i:s'),
 				// 'updated_at' => time(),
 			];
@@ -138,6 +136,7 @@ class Dashboard extends CI_Controller
 				'department'	   	=> $this->input->post('department'),
 				'notes'             => $this->input->post('notes'),
 				'status'            => $this->input->post('status'),
+				'created_at' 		=> date('Y-m-d H:i:s'),
 			];
 
 			$upload_image = $_FILES['image']['name'];
@@ -204,11 +203,13 @@ class Dashboard extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$data = [
-				'job_title' => $this->input->post('job_title'),
-				'job_description' => $this->input->post('job_description'),
-				'department' => $this->input->post('department'),
-				'notes' => $this->input->post('notes'),
-				'status' => $this->input->post('status'),
+				'job_title' 		=> $this->input->post('job_title'),
+				'job_description' 	=> $this->input->post('job_description'),
+				'department' 		=> $this->input->post('department'),
+				'notes' 			=> $this->input->post('notes'),
+				'status' 			=> $this->input->post('status'),
+				'updated_at' 		=> date('Y-m-d H:i:s'),
+
 			];
 			$upload_image = $_FILES['image']['name'];
 			if ($upload_image) {
@@ -248,12 +249,40 @@ class Dashboard extends CI_Controller
 
 	public function my_profile()
 	{
-		$data['title'] = "My Profile";
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['title']	= "My Profile";
+		// $data['user']	= $this->userrole->getBy();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('my_profile', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function forgot_password()
+	{
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Forgot Password";
+			$this->load->view('templates/auth_header', $data);
+			$this->load->view('auth/forgot_password', $data);
+			$this->load->view('templates/auth_footer');
+		} else {
+			$email = $this->input->post('email');
+			$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+			if ($user) {
+				$token = base64_encode(random_bytes(32));
+				$user_token = [
+					'email'			=> $email,
+					'token'			=> $token,
+					'created_at'	=> date('Y-m-d H:i:s'),
+				];
+
+				$this->db->insert('user_token', $user_token);
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered</div>');
+				redirect('dashboard/forgot_password');
+			}
+		}
 	}
 }

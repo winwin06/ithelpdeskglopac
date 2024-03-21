@@ -1,6 +1,9 @@
 <?php
 class User extends CI_Model
 {
+    public $table   = 'user';
+    public $id      = 'id';
+
     public function count_record($email, $password)
     {
         $kondisi = array(
@@ -34,4 +37,19 @@ class User extends CI_Model
     {
     }
 
+    public function get()
+    {
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getBy()
+    {
+        $email = $this->session->userdata('email');
+        $this->db->from($this->table);
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

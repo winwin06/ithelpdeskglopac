@@ -35,7 +35,7 @@
 
         <div class="text-center">
             <p class="form-group">
-                <a href="forgot-password.html">Forgot Password?</a>
+                <a href="<?= site_url('auth/forgot_password')?>">Forgot Password?</a>
             </p>
         </div>
         <div class="text-center">
