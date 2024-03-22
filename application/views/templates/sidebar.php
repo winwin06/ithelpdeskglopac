@@ -68,8 +68,14 @@
                     <li class="nav-header">Job Request</li>
                     <li class="nav-item">
                         <a href="<?= site_url('dashboard/job_request') ?>" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <i class="nav-icon fas fa-list-alt"></i>
                             <p>Job Request</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= site_url('dashboard/list_job') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-tasks"></i>
+                            <p>List Job Request</p>
                         </a>
                     </li>
                     <li class="nav-header">My Profile</li>

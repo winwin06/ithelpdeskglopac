@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="department">Department</label>
-                            <input type="text" name="department" value="<?= set_value('department'); ?>" class="form-control" id="department" placeholder="Department">
+                            <input type="text" name="department" value="<?= $job_request('department'); ?>" class="form-control" id="department" placeholder="Department">
                             <?= form_error('department', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">

@@ -97,7 +97,6 @@ class Dashboard extends CI_Controller
 	public function dashboard()
 	{
 		$data['title'] 	= 'Dashboard';
-		$data['job_request'] = $this->job_request_model->get_all_job_request();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -247,6 +246,17 @@ class Dashboard extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert alert-success" 
 			role="alert">You have been logged out</div>');
 		redirect('');
+	}
+
+	public function list_job()
+	{
+		$data['title'] 	= 'History of Job Request';
+		$data['job_request'] = $this->job_request_model->get_all_job_request();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('job_request/history_job');
+		$this->load->view('templates/footer');
 	}
 
 	public function my_profile()
