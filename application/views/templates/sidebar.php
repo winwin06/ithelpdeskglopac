@@ -79,8 +79,13 @@
                             <p>My Profile</p>
                         </a>
                     </li>
-                    <hr class="mt-5 mb-5">
-
+                    <li class="nav-header">User</li>
+                    <li class="nav-item">
+                        <a href="<?= site_url('dashboard/user_page/') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>User</p>
+                        </a>
+                    </li>
 
                     <hr class="mt-5 mb-5">
                     <li class="nav-item">

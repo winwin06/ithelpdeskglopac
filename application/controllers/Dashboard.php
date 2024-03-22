@@ -12,50 +12,50 @@ class Dashboard extends CI_Controller
 	}
 
 	public function index()
-    {
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Glopac User Login';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/login');
-            $this->load->view('templates/auth_footer');
-        } else {
-            // validasinya success
-            $this->_login();
-        }
-    }
+	{
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required|trim');
+		if ($this->form_validation->run() == false) {
+			$data['title'] = 'Glopac User Login';
+			$this->load->view('templates/auth_header', $data);
+			$this->load->view('auth/login');
+			$this->load->view('templates/auth_footer');
+		} else {
+			// validasinya success
+			$this->_login();
+		}
+	}
 
-    private function _login()
-    {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
+	private function _login()
+	{
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        if ($user) {
-            if (password_verify($password, $user['password'])) {
-                $data = [
-                    'email' => $user['email'],
-                    'role'  => $user['role'],
-                    'id'    => $user['id']
-                ];
-                $this->session->set_userdata($data);
-                if ($user['role'] == '1') {
-                    redirect('dashboard/job_request');
-                } else if ($user['role'] == '2') {
-                    redirect('dashboard');
-                }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+		if ($user) {
+			if (password_verify($password, $user['password'])) {
+				$data = [
+					'email' => $user['email'],
+					'role'  => $user['role'],
+					'id'    => $user['id']
+				];
+				$this->session->set_userdata($data);
+				if ($user['role'] == '1') {
+					redirect('dashboard/job_request');
+				} else if ($user['role'] == '2') {
+					redirect('dashboard');
+				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert
                 alert-danger" role="alert">Wrong Password!</div>');
-                redirect('');
-            }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert 
+				redirect('');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert 
             alert-danger" role="alert">This email has not been activated!</div>');
-            redirect('');
-        }
-    }
+			redirect('');
+		}
+	}
 
 	public function registration()
 	{
@@ -97,6 +97,8 @@ class Dashboard extends CI_Controller
 	public function dashboard()
 	{
 		$data['title'] 	= 'Dashboard';
+		$data['job_request'] = $this->job_request_model->get_all_job_request();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('dashboard');
@@ -282,6 +284,24 @@ class Dashboard extends CI_Controller
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered</div>');
 				redirect('dashboard/forgot_password');
 			}
+		}
+	}
+
+	public function user_page()
+	{
+		$data['user']	= $this->userrole->getBy();
+		$data['title'] 	= 'User';
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('user_page', $data);
+		$this->load->view('templates/footer');
+
+		if ($this->session->userdata('email')) {
+			// Ambil data user yang sedang login
+			$data['user'] = $this->user->getUser('email', $this->session->userdata('email'));
+		} else {
+			// Jika tidak ada pengguna yang login, redirect ke halaman login
+			redirect('');
 		}
 	}
 }

@@ -4,6 +4,12 @@ class User extends CI_Model
     public $table   = 'user';
     public $id      = 'id';
 
+    public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('user');
+	}
+
     public function count_record($email, $password)
     {
         $kondisi = array(
@@ -32,5 +38,10 @@ class User extends CI_Model
         $this->db->where('email', $email);
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function getUser($field, $value)
+    {
+        return $this->db->get_where('user', [$field => $value])->row_array();
     }
 }
