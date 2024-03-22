@@ -12,50 +12,50 @@ class Dashboard extends CI_Controller
 	}
 
 	public function index()
-	{
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-		$this->form_validation->set_rules('password', 'Password', 'required|trim');
-		if ($this->form_validation->run() == false) {
-			$data['title'] = 'Glopac User Login';
-			$this->load->view('templates/auth_header', $data);
-			$this->load->view('auth/login');
-			$this->load->view('templates/auth_footer');
-		} else {
-			// validasinya success
-			$this->_login();
-		}
-	}
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Glopac User Login';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth_footer');
+        } else {
+            // validasinya success
+            $this->_login();
+        }
+    }
 
-	private function _login()
-	{
-		$email 		= $this->input->post('email');
-		$password 	= $this->input->post('password');
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['email' => $email])->row_array();
-		if ($user) {
-			if (password_verify($password, $user['password'])) {
-				$data = [
-					'email' => $user['email'],
-					'role'  => $user['role'],
-					'id'	=> $user['id']
-				];
-				$this->session->set_userdata($data);
-				if ($user['role'] == '1') {
-					redirect('dashboard/job_request');
-				} else if ($user['role'] == '2') {
-					redirect('dashboard');
-				}
-			} else {
-				$this->session->set_flashdata('message', '<div class="alert
-				alert-danger" role="alert">Wrong Password!</div>');
-				redirect('');
-			}
-		} else {
-			$this->session->set_flashdata('message', '<div class="alert 
-			alert-danger" role="alert">This email has been not actived!</div>');
-			redirect('');
-		}
-	}
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        if ($user) {
+            if (password_verify($password, $user['password'])) {
+                $data = [
+                    'email' => $user['email'],
+                    'role'  => $user['role'],
+                    'id'    => $user['id']
+                ];
+                $this->session->set_userdata($data);
+                if ($user['role'] == '1') {
+                    redirect('dashboard/job_request');
+                } else if ($user['role'] == '2') {
+                    redirect('dashboard');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert
+                alert-danger" role="alert">Wrong Password!</div>');
+                redirect('');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert 
+            alert-danger" role="alert">This email has not been activated!</div>');
+            redirect('');
+        }
+    }
 
 	public function registration()
 	{
@@ -249,10 +249,8 @@ class Dashboard extends CI_Controller
 
 	public function my_profile()
 	{
-		$data['title']	= "My Profile";
-
-		// $data['user']	= $this->userrole->getBy();
-
+		$data['user']	= $this->userrole->getBy();
+		$data['title']	 = 'My Profile';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('my_profile', $data);

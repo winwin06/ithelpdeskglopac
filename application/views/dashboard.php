@@ -1,3 +1,3 @@
 <div class="">
-    <a href="">Welcome, wiwin!</a>
+    <a href="">Welcome, <?= $this->session->userdata('name') ?></a>
 </div>

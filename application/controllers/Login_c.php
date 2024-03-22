@@ -20,12 +20,15 @@ class Login_c extends CI_Controller
         $count = $this->user->count_record($email, $password);
 
         if ($count != 0) {
+            $data = [
+                'email' => $post['email'],
+            ];
+            $this->session->set_userdata($data);
             redirect('dashboard/dashboard');
         } else {
             redirect('dashboard/index');
         }
 
-        // $this->output->enable_profiler();
-
+        $this->output->enable_profiler();
     }
 }

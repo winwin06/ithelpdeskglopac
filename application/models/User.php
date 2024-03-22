@@ -25,25 +25,6 @@ class User extends CI_Model
         $this->load->view('auth/index', $data);
     }
 
-    public function hapus_record()
-    {
-    }
-
-    public function update_record()
-    {
-    }
-
-    public function kosongkan_table()
-    {
-    }
-
-    public function get()
-    {
-        $this->db->from($this->table);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
     public function getBy()
     {
         $email = $this->session->userdata('email');
