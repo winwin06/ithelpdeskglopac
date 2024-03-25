@@ -249,14 +249,14 @@ class Dashboard extends CI_Controller
 		redirect('');
 	}
 
-	public function list_job()
+	public function job_history()
 	{
-		$data['title'] 	= 'History of Job Request';
+		$data['title'] 	= 'Job Request History';
 		$data['job_request'] = $this->job_request_model->get_all_job_request();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
-		$this->load->view('job_request/history_job');
+		$this->load->view('job_request/job_history');
 		$this->load->view('templates/footer');
 	}
 

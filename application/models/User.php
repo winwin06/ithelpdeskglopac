@@ -43,5 +43,6 @@ class User extends CI_Model
     public function getUser($field, $value)
     {
         return $this->db->get_where('user', [$field => $value])->row_array();
+        
     }
 }

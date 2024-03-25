@@ -73,9 +73,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('dashboard/list_job') ?>" class="nav-link">
+                        <a href="<?= site_url('dashboard/job_history') ?>" class="nav-link">
                             <i class="nav-icon fas fa-tasks"></i>
-                            <p>List Job Request</p>
+                            <p>Job Request History</p>
                         </a>
                     </li>
                     <li class="nav-header">My Profile</li>
