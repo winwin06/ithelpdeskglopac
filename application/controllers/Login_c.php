@@ -40,17 +40,17 @@ class Login_c extends CI_Controller
                 } else {
                     // Jika peran tidak didefinisikan, tampilkan pesan kesalahan
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
-                    redirect('index');
+                    redirect('');
                 }
             } else {
                 // Login gagal, tampilkan pesan kesalahan
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid email or password!</div>');
-                redirect('index');
+                redirect('');
             }
         } else {
             // Jika email atau password kosong, tampilkan pesan kesalahan
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email and password are required!</div>');
-            redirect('index');
+            redirect('');
         }
         $this->output->enable_profiler();
     }

@@ -54,22 +54,22 @@ class Auth extends CI_Controller
 					} else {
 						// Jika peran tidak didefinisikan, tampilkan pesan kesalahan
 						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
-						redirect('auth');
+						redirect('');
 					}
 				} else {
 					// Password salah, tampilkan pesan kesalahan
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
-					redirect('auth');
+					redirect('');
 				}
 			} else {
 				// Email tidak ditemukan, tampilkan pesan kesalahan
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
-				redirect('auth');
+				redirect('');
 			}
 		} else {
 			// Jika email kosong, tampilkan pesan kesalahan
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email field is required!</div>');
-			redirect('auth');
+			redirect('');
 		}
 	}
 
