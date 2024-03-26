@@ -31,10 +31,10 @@
 
                 <div class="text-center">
                     <p class="form-group">
-                        <a href="<?= site_url('dashboard/forgot_password') ?>">Forgot Password?</a>
+                        <a href="<?= site_url('auth/forgot_password') ?>">Forgot Password?</a>
                     </p>
                     <p class="form-group">
-                        <a class="text-center" href="<?= site_url('dashboard/registration') ?>">Create an Account!</a>
+                        <a class="text-center" href="<?= site_url('auth/registration') ?>">Create an Account!</a>
                     </p>
                 </div>
             </div>

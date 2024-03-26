@@ -34,23 +34,23 @@ class Login_c extends CI_Controller
 
                 // Redirect sesuai peran user
                 if ($user['role'] == 'user') {
-                    redirect('dashboard/job_request');
+                    redirect('job_request');
                 } else if ($user['role'] == 'admin') {
-                    redirect('dashboard/dashboard');
+                    redirect('dashboard');
                 } else {
                     // Jika peran tidak didefinisikan, tampilkan pesan kesalahan
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
-                    redirect('dashboard/index');
+                    redirect('index');
                 }
             } else {
                 // Login gagal, tampilkan pesan kesalahan
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid email or password!</div>');
-                redirect('dashboard/index');
+                redirect('index');
             }
         } else {
             // Jika email atau password kosong, tampilkan pesan kesalahan
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email and password are required!</div>');
-            redirect('dashboard/index');
+            redirect('index');
         }
         $this->output->enable_profiler();
     }

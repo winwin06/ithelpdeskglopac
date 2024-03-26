@@ -34,7 +34,7 @@
                             <i class="fas fa-user mr-2"></i>My Profile
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= site_url('dashboard') ?>" class="dropdown-item" onclick="return confirm('Are you sure you want to sign out?');">
+                        <a href="<?= site_url('auth') ?>" class="dropdown-item" onclick="return confirm('Are you sure you want to sign out?');">
                             <i class="fas fa-sign-out-alt mr-2"></i>
                             Sign Out
                         </a>

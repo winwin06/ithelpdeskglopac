@@ -11,7 +11,7 @@
 
                     <?= $this->session->flashdata('message'); ?>
 
-                    <form class="user" method="post" action="<?= site_url('dashboard/forgot_password') ?>">
+                    <form class="user" method="post" action="<?= site_url('auth/forgot_password') ?>">
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
@@ -28,7 +28,7 @@
 
                 <div class="text-center">
                     <p class="form-group">
-                        <a class="text-center" href="<?= site_url('dashboard') ?>">Back to Login!</a>
+                        <a class="text-center" href="<?= site_url('auth') ?>">Back to Login!</a>
                     </p>
                 </div>
             </div>
