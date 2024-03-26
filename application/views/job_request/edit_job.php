@@ -54,9 +54,7 @@
                                 <?php endif; ?>
                             </div>
 
-
-
-                            <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-danger">Cancel</a>
+                            <a href="<?= site_url('job_request') ?>" class="btn btn-danger">Cancel</a>
                             <button type="submit" name="update" onclick="return confirm('Confirm?')" class="btn btn-primary float-right">Update</button>
 
                     </form>

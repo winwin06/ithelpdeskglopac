@@ -30,7 +30,7 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">User Options</span>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= site_url('dashboard/my_profile') ?>" class="dropdown-item">
+                        <a href="<?= site_url('my_profile') ?>" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i>My Profile
                         </a>
                         <div class="dropdown-divider"></div>
@@ -45,7 +45,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
                 <img src="<?= base_url('assets/') ?>dist/img/logo_glopac.png" alt="Glopac Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -67,27 +67,27 @@
 
                     <li class="nav-header">Job Request</li>
                     <li class="nav-item">
-                        <a href="<?= site_url('dashboard/job_request') ?>" class="nav-link">
+                        <a href="<?= site_url('job_request') ?>" class="nav-link">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>Job Request</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= site_url('dashboard/job_history') ?>" class="nav-link">
+                        <a href="<?= site_url('job_request/job_history') ?>" class="nav-link">
                             <i class="nav-icon fas fa-tasks"></i>
                             <p>Job Request History</p>
                         </a>
                     </li>
                     <li class="nav-header">My Profile</li>
                     <li class="nav-item">
-                        <a href="<?= site_url('dashboard/my_profile/') ?>" class="nav-link">
+                        <a href="<?= site_url('my_profile/') ?>" class="nav-link">
                             <i class="nav-icon fas fa-user-circle"></i>
                             <p>My Profile</p>
                         </a>
                     </li>
                     <li class="nav-header">User</li>
                     <li class="nav-item">
-                        <a href="<?= site_url('dashboard/user_page/') ?>" class="nav-link">
+                        <a href="<?= site_url('my_profile/user_page/') ?>" class="nav-link">
                             <i class="nav-icon fas fa-user-circle"></i>
                             <p>User</p>
                         </a>

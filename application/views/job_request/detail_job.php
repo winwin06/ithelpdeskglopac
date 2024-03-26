@@ -39,7 +39,7 @@
                         <div class="col-md-6"><?= $job_request['status']; ?></div>
                     </div>
                     <div class="card-footer justify-content-center">
-                        <a href="<?= site_url('dashboard/job_request') ?>" class="badge badge-danger float-right">Close</a>
+                        <a href="<?= site_url('job_request') ?>" class="badge badge-danger float-right">Close</a>
                     </div>
                 </div>
             </div>

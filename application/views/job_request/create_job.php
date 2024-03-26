@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="<?= site_url('dashboard/create_job_request'); ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?= site_url('job_request/create_job'); ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="job_title">Job Title</label>
                             <input type="text" name="job_title" value="<?= set_value('job_title'); ?>" class="form-control" id="job_title" placeholder="Job Title">
@@ -52,7 +52,7 @@
 
 
 
-                        <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-danger">Close</a>
+                        <a href="<?= site_url('job_request') ?>" class="btn btn-danger">Close</a>
                         <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>
