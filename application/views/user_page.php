@@ -10,6 +10,7 @@
                         <th>No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,6 +19,7 @@
                         <td><?= $i; ?>.</td>
                         <td><?= $user['name']; ?></td>
                         <td><?= $user['email']; ?></td>
+                        <td><?= $user['role']; ?></td>
                     </tr>
                     <?php $i++; ?>
                 </tbody>

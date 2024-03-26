@@ -35,15 +35,23 @@
                                 <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select name="status" value="<?= set_value('status'); ?>" id="status" class="form-control">
-                                <option value="">--Status--</option>
-                                <option value="Not Started">Not Started</option>
-                                <option value="On Going">On Going</option>
-                                <option value="Done">Done</option>
-                            </select>
+                            <?php if ($this->session->userdata("role") == "user") : ?>
+                                <input type="text" name="status" id="status" class="form-control" readonly>
+                            <?php else : ?>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="">--Status--</option>
+                                    <option value="Not Started">Not Started</option>
+                                    <option value="On Going">On Going</option>
+                                    <option value="Done">Done</option>
+                                </select>
+                            <?php endif; ?>
                         </div>
+
+
+
                         <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-danger">Close</a>
                         <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
                     </form>

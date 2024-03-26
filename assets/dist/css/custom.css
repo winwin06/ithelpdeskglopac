@@ -10,3 +10,16 @@
     margin-bottom: 2px;
     /* Atur margin bawah */
 }
+
+.sidebar {
+    position: fixed;
+    top: 0; /* Atur jarak dari bagian atas halaman */
+    left: 0; /* Atur jarak dari bagian kiri halaman */
+    width: 250px; /* Sesuaikan lebar sesuai kebutuhan */
+    height: 100%; /* Agar sidebar mengisi tinggi halaman */
+    overflow-y: auto; /* Tampilkan scrollbar jika konten melebihi tinggi sidebar */
+    z-index: 1000; /* Pastikan sidebar ditampilkan di atas konten lain */
+    background-color: #343a40; /* Warna latar belakang sidebar */
+    color: #ffffff; /* Warna teks pada sidebar */
+}
+

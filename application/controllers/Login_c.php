@@ -17,18 +17,42 @@ class Login_c extends CI_Controller
         $email    = $post['email'];
         $password = $post['password'];
 
-        $count = $this->user->count_record($email, $password);
+        // Periksa apakah email dan password tidak kosong
+        if (!empty($email) && !empty($password)) {
+            // Periksa login menggunakan model user
+            $count = $this->user->count_record($email, $password);
 
-        if ($count != 0) {
-            $data = [
-                'email' => $post['email'],
-            ];
-            $this->session->set_userdata($data);
-            redirect('dashboard/dashboard');
+            if ($count != 0) {
+                $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+                // Set session data
+                $data = [
+                    'email' => $user['email'],
+                    'role'  => $user['role']
+                ];
+                $this->session->set_userdata($data);
+
+                // Redirect sesuai peran user
+                if ($user['role'] == 'user') {
+                    redirect('dashboard/job_request');
+                } else if ($user['role'] == 'admin') {
+                    redirect('dashboard/dashboard');
+                } else {
+                    // Jika peran tidak didefinisikan, tampilkan pesan kesalahan
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
+                    redirect('dashboard/index');
+                }
+            } else {
+                // Login gagal, tampilkan pesan kesalahan
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid email or password!</div>');
+                redirect('dashboard/index');
+            }
         } else {
+            // Jika email atau password kosong, tampilkan pesan kesalahan
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email and password are required!</div>');
             redirect('dashboard/index');
         }
-
         $this->output->enable_profiler();
     }
+    
 }

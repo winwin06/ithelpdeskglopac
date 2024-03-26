@@ -93,7 +93,7 @@
                         </a>
                     </li>
 
-                    <hr class="mt-5 mb-5">
+                    <hr class="mt-4 mb-4">
                     <li class="nav-item">
                         <a href="<?= site_url('') ?>" class="nav-link" onclick="return confirm('Are you sure you want to logout?');">
                             <i class="nav-icon fas fa-sign-out-alt"></i>

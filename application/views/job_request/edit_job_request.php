@@ -39,16 +39,23 @@
                             </img>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select name="status" value="<?= $job_request['status']; ?>" id="status" class="form-control">
-                                    <?php foreach ($status as $us) :  ?>
-                                        <?php if ($us == $job_request['status']) : ?>
-                                            <option value="<?= $us ?>" selected><?= $us ?></option>
-                                        <?php else : ?>
-                                            <option value="<?= $us ?>"><?= $us ?></option>
-                                        <?php endif; ?>
-                                    <?php endforeach ?>
-                                </select>
+                                <?php if ($this->session->userdata("role") == "user") : ?>
+                                    <input type="text" name="status" id="status" class="form-control" value="<?= $job_request['status']; ?>" readonly>
+                                <?php else : ?>
+                                    <select name="status" id="status" class="form-control">
+                                        <?php foreach ($status as $us) : ?>
+                                            <?php if ($us == $job_request['status']) : ?>
+                                                <option value="<?= $us ?>" selected><?= $us ?></option>
+                                            <?php else : ?>
+                                                <option value="<?= $us ?>"><?= $us ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach ?>
+                                    </select>
+                                <?php endif; ?>
                             </div>
+
+
+
                             <a href="<?= site_url('dashboard/job_request') ?>" class="btn btn-danger">Cancel</a>
                             <button type="submit" name="update" onclick="return confirm('Confirm?')" class="btn btn-primary float-right">Update</button>
 

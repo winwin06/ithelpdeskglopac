@@ -31,31 +31,48 @@ class Dashboard extends CI_Controller
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['email' => $email])->row_array();
-		if ($user) {
-			if (password_verify($password, $user['password'])) {
-				$data = [
-					'email' => $user['email'],
-					'role'  => $user['role'],
-					'id'    => $user['id']
-				];
-				$this->session->set_userdata($data);
-				if ($user['role'] == '1') {
-					redirect('dashboard/job_request');
-				} else if ($user['role'] == '2') {
+		// Periksa apakah email tidak kosong
+		if (!empty($email)) {
+			$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+			// Periksa apakah user ditemukan
+			if ($user) {
+				// Periksa password dengan password_verify()
+				if (password_verify($password, $user['password'])) {
+					$data = [
+						'email' => $user['email'],
+						'role'  => $user['role'],
+						'id'    => $user['id']
+					];
+					$this->session->set_userdata($data);
+
+					// Redirect sesuai peran user
+					if ($user['role'] == 'user') {
+						redirect('dashboard/job_request');
+					} else if ($user['role'] == 'admin') {
+						redirect('dashboard/dashboard');
+					} else {
+						// Jika peran tidak didefinisikan, tampilkan pesan kesalahan
+						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
+						redirect('dashboard');
+					}
+				} else {
+					// Password salah, tampilkan pesan kesalahan
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
 					redirect('dashboard');
 				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert
-                alert-danger" role="alert">Wrong Password!</div>');
-				redirect('');
+				// Email tidak ditemukan, tampilkan pesan kesalahan
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+				redirect('dashboard');
 			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert 
-            alert-danger" role="alert">This email has not been activated!</div>');
-			redirect('');
+			// Jika email kosong, tampilkan pesan kesalahan
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email field is required!</div>');
+			redirect('dashboard');
 		}
 	}
+
 
 	public function registration()
 	{
@@ -123,8 +140,11 @@ class Dashboard extends CI_Controller
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
-		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
-		$this->form_validation->set_rules('status', 'Status', 'required|trim');
+		
+		// Jika pengguna adalah "admin", tambahkan aturan validasi untuk status
+		if ($this->session->userdata("role") == "admin") {
+			$this->form_validation->set_rules('status', 'Status', 'required|trim');
+		}
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
@@ -195,8 +215,11 @@ class Dashboard extends CI_Controller
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
-		$this->form_validation->set_rules('notes', 'Notes', 'required|trim');
-		$this->form_validation->set_rules('status', 'Status', 'required|trim');
+	
+		// Jika pengguna adalah "admin", tambahkan aturan validasi untuk status
+		if ($this->session->userdata("role") == "admin") {
+			$this->form_validation->set_rules('status', 'Status', 'required|trim');
+		}
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);

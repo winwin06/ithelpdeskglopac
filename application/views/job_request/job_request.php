@@ -52,8 +52,7 @@
                             <td>
                                 <a href="<?= site_url('dashboard/detail_job_request/') . $us['id']; ?>" class="badge badge-info">Detail</a>
                                 <a href="<?= site_url('dashboard/edit_job_request/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
-                                <a href="<?= site_url('dashboard/delete_job_request/') . $us['id']; ?>" class="badge badge-danger" 
-                                 onclick="return confirm('yakin?')">Delete</a>
+                                <a href="<?= site_url('dashboard/delete_job_request/') . $us['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
