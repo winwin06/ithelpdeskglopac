@@ -11,7 +11,7 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="<?= site_url('dashboard') ?>" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -47,16 +47,16 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= site_url('dashboard')?>" class="brand-link">
                 <img src="<?= base_url('assets/') ?>dist/img/logo_glopac.png" alt="Glopac Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Glopac Slayy</span>
+                <span class="brand-text font-weight-light">PT Glopac Indonesia</span>
             </a>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item has-treeview menu-open">
-                        <a href="<?= site_url('dashboard/dashboard') ?>" class="nav-link active">
+                        <a href="<?= site_url('dashboard') ?>" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard

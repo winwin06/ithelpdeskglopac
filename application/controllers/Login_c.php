@@ -34,7 +34,7 @@ class Login_c extends CI_Controller
 
                 // Redirect sesuai peran user
                 if ($user['role'] == 'user') {
-                    redirect('job_request');
+                    redirect('dashboard');
                 } else if ($user['role'] == 'admin') {
                     redirect('dashboard');
                 } else {
