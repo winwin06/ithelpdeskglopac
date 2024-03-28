@@ -80,7 +80,7 @@
                     </li>
                     <li class="nav-header">My Profile</li>
                     <li class="nav-item">
-                        <a href="<?= site_url('my_profile/') ?>" class="nav-link">
+                        <a href="<?= site_url('my_profile') ?>" class="nav-link">
                             <i class="nav-icon fas fa-user-circle"></i>
                             <p>My Profile</p>
                         </a>
