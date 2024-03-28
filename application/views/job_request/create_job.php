@@ -53,7 +53,7 @@
 
 
                         <a href="<?= site_url('job_request') ?>" class="btn btn-danger">Close</a>
-                        <button type="submit" name="tambah" class="btn btn-primary float-right">Submit</button>
+                        <button type="submit" name="tambah" onclick="return confirm('Confirm?')" class="btn btn-primary float-right">Submit</button>
                     </form>
                 </div>
             </div>
