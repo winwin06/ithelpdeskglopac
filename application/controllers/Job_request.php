@@ -144,10 +144,27 @@ class Job_request extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-    public function delete($id)
+	public function delete_job($id)
 	{
-		$this->job_request_model->delete($id);
-		$this->session->set_flashdata('flash', 'Dihapus');
+		$job_request = $this->job_request_model->get_job_by_id($id);
+		
+		// Periksa peran pengguna
+		if ($this->session->userdata("role") == "admin") {
+			// Jika pengguna adalah admin, izinkan penghapusan tanpa memperdulikan status
+			$this->job_request_model->delete($id);
+			$this->session->set_flashdata('flash', 'Berhasil Dihapus');
+		} else {
+			// Jika pengguna adalah user
+			// Periksa jika statusnya bukan "Not Started"
+			if ($job_request['status'] != 'Not Started') {
+				// Tampilkan pesan bahwa pekerjaan dengan status selain "Not Started" tidak bisa dihapus
+				$this->session->set_flashdata('flash', 'Maaf tidak bisa dihapus.');
+			} else {
+				// Jika status "Not Started", izinkan penghapusan
+				$this->job_request_model->delete($id);
+				$this->session->set_flashdata('flash', 'Berhasil Dihapus');
+			}
+		}
 		redirect('job_request');
 	}
 

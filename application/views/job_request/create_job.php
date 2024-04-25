@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="status">Status</label>
                             <?php if ($this->session->userdata("role") == "user") : ?>
-                                <input type="text" name="status" id="status" class="form-control" readonly>
+                                <input type="text" name="status" id="status" class="form-control" value="Not Started" readonly>
                             <?php else : ?>
                                 <select name="status" id="status" class="form-control">
                                     <option value="">--Status--</option>
@@ -49,8 +49,6 @@
                                 </select>
                             <?php endif; ?>
                         </div>
-
-
 
                         <a href="<?= site_url('job_request') ?>" class="btn btn-danger">Close</a>
                         <button type="submit" name="tambah" onclick="return confirm('Confirm?')" class="btn btn-primary float-right">Submit</button>

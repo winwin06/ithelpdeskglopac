@@ -51,8 +51,15 @@
                             <td><?= $us['status']; ?></td>
                             <td>
                                 <a href="<?= site_url('job_request/detail_job/') . $us['id']; ?>" class="badge badge-info">Detail</a>
-                                <a href="<?= site_url('job_request/edit_job/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
-                                <a href="<?= site_url('job_request/delete_job/') . $us['id']; ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
+                                <!-- <a href="<?= site_url('job_request/edit_job/') . $us['id']; ?>" class="badge badge-warning">Edit</a> -->
+                                <?php if ($this->session->userdata("role") == "admin" || $us['status'] == 'Not Started') : ?>
+                                    <a href="<?= site_url('job_request/edit_job/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
+                                <?php endif; ?>
+
+                                <?php if ($this->session->userdata("role") == "admin" || $us['status'] == 'Not Started') : ?>
+                                    <a href="<?= site_url('job_request/delete_job/') . $us['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</a>
+                                <?php endif; ?>
+
                             </td>
                         </tr>
                         <?php $i++; ?>

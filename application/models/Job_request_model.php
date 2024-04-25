@@ -45,5 +45,11 @@ class Job_request_model extends CI_Model
     {
         return $this->db->get('job_request')->result_array();
     }
+
+	public function get_job_by_id($id)
+	{
+		$this->db->where('id', $id);
+		return $this->db->get('job_request')->row_array();
+	}
 }
 
