@@ -16,10 +16,12 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="<?= site_url('job_request/create_job') ?>" class="btn btn-info mb-2">Create</a>
+            <a href="<?= site_url('job_request/create_job') ?>" class="btn btn-info mb-2"><i class="fas fa-plus-circle"></i> Create</a>
+            <a href="<?= site_url('job_request/create_job') ?>" class="btn btn-info mb-2"><i class="fas fa-search"></i> Filter</a>
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>
+    
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Notifications</h3>
