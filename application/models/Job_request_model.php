@@ -13,6 +13,10 @@ class Job_request_model extends CI_Model
 
 	public function get_data()
 	{
+
+		
+
+
 		$query = $this->db->get('job_request');
 		return $query->result_array();
 	}

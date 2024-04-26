@@ -37,11 +37,11 @@
                     <form action="<?= site_url('job_request') ?>" method="post">
                         <div class="form-group">
                             <label for="dateFrom">Date From</label>
-                            <input type="date" class="form-control" id="created_at" name="created_at">
+                            <input type="date" class="form-control" id="created_at" name="dateFrom>
                         </div>
                         <div class="form-group">
                             <label for="dateTo">Date To</label>
-                            <input type="date" class="form-control" id="created_at" name="creayed_at">
+                            <input type="date" class="form-control" id="created_at" name="dateTo">
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
