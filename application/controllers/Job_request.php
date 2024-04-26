@@ -11,16 +11,41 @@ class Job_request extends CI_Controller
 		$this->load->model('job_request_model');
 	}
 
+	// public function index()
+	// {
+    //     $data['title'] 			= 'Job Request';
+	// 	$data['job_request'] 	= $this->job_request_model->get_data('job_request');
+
+	// 	$this->load->view('templates/header', $data);
+	// 	$this->load->view('templates/sidebar', $data);
+	// 	$this->load->view('job_request/job_request', $data);
+	// 	$this->load->view('templates/footer');
+	// }
+
 	public function index()
 	{
-        $data['title'] 			= 'Job Request';
-		$data['job_request'] 	= $this->job_request_model->get_data('job_request');
+		$data['title'] = 'Job Request';
+
+		// Jika form filter dikirimkan
+		if ($this->input->post('submit')) {
+			$dateFrom = $this->input->post('dateFrom');
+			$dateTo = $this->input->post('dateTo');
+			$status = $this->input->post('status');
+
+			// Ambil data berdasarkan filter
+			$data['job_request'] = $this->job_request_model->get_data($dateFrom, $dateTo, $status);
+		} else {
+			// Ambil semua data jika tidak ada filter
+			$data['job_request'] = $this->job_request_model->get_data();
+		}
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
 		$this->load->view('templates/footer');
 	}
+
+
 
     public function create_job()
 	{
