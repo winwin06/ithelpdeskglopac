@@ -34,16 +34,15 @@ class Job_request_model extends CI_Model
 	{
 		$post = $this->input->post();
 		//Filter Berdasarkan Date From
-		if (isset($post['dateFrom']) and $post['dateFrom'] !='') {
-			$this->db->where('created_at' >= date('Y-m-d')); 
-		}else{
-			echo 'data tidak ada';
+		if (isset($post['dateFrom']) && $post['dateFrom'] != '') {
+			$this->db->where('created_at >=', $post['dateFrom']); // Menggunakan '>='
 		}
 		
+		//Filter Berdasarkan Date To
+		if (isset($post['dateTo']) && $post['dateTo'] != '') {
+			$this->db->where('created_at <=', $post['dateTo']. ' 23:59:59'); // Menggunakan '<='
+		}
 		
-		
-
-
 		//Filter Berdasarkan Status
 		if (isset($post['status']) and $post['status'] != '') {
 			$conditions = array('status' => $post['status']);
