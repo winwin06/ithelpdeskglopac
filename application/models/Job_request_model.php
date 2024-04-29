@@ -17,26 +17,41 @@ class Job_request_model extends CI_Model
 	// 	return $query->result_array();
 	// }
 
-	public function get_data($dateFrom = null, $dateTo = null, $status = null)
+	// public function get_data($dateFrom ='', $dateTo = '', $status = '')
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from('job_request');
+
+	// 	// Filter berdasarkan tanggal
+	// 	if (!empty($dateFrom) && !empty($dateTo)) {
+	// 		$this->db->where('created_at >=', $dateFrom);
+	// 		$this->db->where('created_at <=', $dateTo);
+	// 	}
+	// 	// Filter berdasarkan status
+	// 	if (!empty($status)) {
+	// 		$this->db->where('status', $status);
+	// 	}
+
+	// 	$query = $this->db->get();
+	// 	return $query->result_array();
+	// }
+	public function get_data()
 	{
+		$post = $this->input->post();
+
+
+		//Filter
+		if (isset($post['status']) and $post['status'] != '') {
+			$conditions = array('status' => $post['status']);
+			$this->db->where($conditions);
+		}
+
 		$this->db->select('*');
-		$this->db->from('job_request');
-
-		// Filter berdasarkan tanggal
-		if (!empty($dateFrom) && !empty($dateTo)) {
-			$this->db->where('created_at >=', $dateFrom);
-			$this->db->where('created_at <=', $dateTo);
-		}
-
-		// Filter berdasarkan status
-		if (!empty($status)) {
-			$this->db->where('status', $status);
-		}
+		$this->db->from($this->table);
 
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-
 
 	public function getJobRequestById($id)
 	{
@@ -49,7 +64,7 @@ class Job_request_model extends CI_Model
 		$this->db->insert($this->table, $data);
 		return $this->db->insert_id();
 	}
-	
+
 	public function update($where, $data)
 	{
 		$this->db->where('id', $this->input->post('id'));
@@ -63,9 +78,9 @@ class Job_request_model extends CI_Model
 	}
 
 	public function get_all_job_request()
-    {
-        return $this->db->get('job_request')->result_array();
-    }
+	{
+		return $this->db->get('job_request')->result_array();
+	}
 
 	public function get_job_by_id($id)
 	{
@@ -73,4 +88,3 @@ class Job_request_model extends CI_Model
 		return $this->db->get('job_request')->row_array();
 	}
 }
-

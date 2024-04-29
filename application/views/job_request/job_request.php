@@ -26,22 +26,22 @@
     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="filterModalLabel">Filter</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form untuk filter -->
-                    <form action="<?= site_url('job_request') ?>" method="post">
+                <form action="<?= site_url('job_request/index') ?>" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form untuk filter -->
                         <div class="form-group">
                             <label for="dateFrom">Date From</label>
-                            <input type="date" class="form-control" id="created_at" name="dateFrom>
+                            <input type="date" class="form-control" id="dateFrom" name="dateFrom">
                         </div>
                         <div class="form-group">
                             <label for="dateTo">Date To</label>
-                            <input type="date" class="form-control" id="created_at" name="dateTo">
+                            <input type="date" class="form-control" id="dateTo" name="dateTo">
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
@@ -53,16 +53,15 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary" name="submit">Search</button>
                             <button type="button" class="btn btn-secondary text-white border-0" data-dismiss="modal">Close</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Notifications</h3>
@@ -94,7 +93,7 @@
                             <td><?= $us['status']; ?></td>
                             <td>
                                 <a href="<?= site_url('job_request/detail_job/') . $us['id']; ?>" class="badge badge-info">Detail</a>
-                              
+
                                 <?php if ($this->session->userdata("role") == "admin" || $us['status'] == 'Not Started') : ?>
                                     <a href="<?= site_url('job_request/edit_job/') . $us['id']; ?>" class="badge badge-warning">Edit</a>
                                 <?php endif; ?>

@@ -4,57 +4,38 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Job_request extends CI_Controller
 {
 
-    public function __construct()
+	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('job_request_model');
 	}
 
-	// public function index()
-	// {
-    //     $data['title'] 			= 'Job Request';
-	// 	$data['job_request'] 	= $this->job_request_model->get_data('job_request');
-
-	// 	$this->load->view('templates/header', $data);
-	// 	$this->load->view('templates/sidebar', $data);
-	// 	$this->load->view('job_request/job_request', $data);
-	// 	$this->load->view('templates/footer');
-	// }
-
 	public function index()
 	{
 		$data['title'] = 'Job Request';
+		$post = $this->input->post;
 
-		// Jika form filter dikirimkan
-		if ($this->input->post('submit')) {
-			$dateFrom = $this->input->post('dateFrom');
-			$dateTo = $this->input->post('dateTo');
-			$status = $this->input->post('status');
-
-			// Ambil data berdasarkan filter
-			$data['job_request'] = $this->job_request_model->get_data($dateFrom, $dateTo, $status);
-		} else {
-			// Ambil semua data jika tidak ada filter
-			$data['job_request'] = $this->job_request_model->get_data();
-		}
+		// Ambil semua data jika tidak ada filter
+		$data['job_request'] = $this->job_request_model->get_data();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
 		$this->load->view('templates/footer');
+
+		// $this->output->enable_profiler();
 	}
 
 
-
-    public function create_job()
+	public function create_job()
 	{
 		$data['title'] = "Add a Job Request";
 
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
-		
+
 		// Jika pengguna adalah "admin", tambahkan aturan validasi untuk status
 		if ($this->session->userdata("role") == "admin") {
 			$this->form_validation->set_rules('status', 'Status', 'required|trim');
@@ -103,7 +84,7 @@ class Job_request extends CI_Controller
 		}
 	}
 
-    public function edit_job($id)
+	public function edit_job($id)
 	{
 		$data['title'] = "Edit Job Request Data";
 		$data['job_request'] = $this->job_request_model->getJobRequestById($id);
@@ -112,7 +93,7 @@ class Job_request extends CI_Controller
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
-	
+
 		// Jika pengguna adalah "admin", tambahkan aturan validasi untuk status
 		if ($this->session->userdata("role") == "admin") {
 			$this->form_validation->set_rules('status', 'Status', 'required|trim');
@@ -159,7 +140,7 @@ class Job_request extends CI_Controller
 		}
 	}
 
-    public function detail_job($id)
+	public function detail_job($id)
 	{
 		$data['title'] 			= "Detail Job Request Data";
 		$data['job_request'] 	= $this->job_request_model->getJobRequestById($id);
@@ -172,7 +153,7 @@ class Job_request extends CI_Controller
 	public function delete_job($id)
 	{
 		$job_request = $this->job_request_model->get_job_by_id($id);
-		
+
 		// Periksa peran pengguna
 		if ($this->session->userdata("role") == "admin") {
 			// Jika pengguna adalah admin, izinkan penghapusan tanpa memperdulikan status
@@ -193,7 +174,7 @@ class Job_request extends CI_Controller
 		redirect('job_request');
 	}
 
-    public function job_history()
+	public function job_history()
 	{
 		$data['title'] 	= 'Job Request History';
 		$data['job_request'] = $this->job_request_model->get_all_job_request();
