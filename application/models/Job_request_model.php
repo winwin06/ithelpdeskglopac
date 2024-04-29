@@ -38,9 +38,18 @@ class Job_request_model extends CI_Model
 	public function get_data()
 	{
 		$post = $this->input->post();
+		//Filter Berdasarkan Date From
+		if (isset($post['date']) and $post['date'] !=''){
+			$conditions = array('date' => $post['date']);
+			$this->db->where($conditions);
+		}
+		
+	
+		//Filter Berdasarkan Date To
+		
 
 
-		//Filter
+		//Filter Berdasarkan Status
 		if (isset($post['status']) and $post['status'] != '') {
 			$conditions = array('status' => $post['status']);
 			$this->db->where($conditions);
