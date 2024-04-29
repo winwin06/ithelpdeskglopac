@@ -11,12 +11,6 @@ class Job_request_model extends CI_Model
 		parent::__construct();
 	}
 
-	// public function get_data()
-	// {
-	// 	$query = $this->db->get('job_request');
-	// 	return $query->result_array();
-	// }
-
 	// public function get_data($dateFrom ='', $dateTo = '', $status = '')
 	// {
 	// 	$this->db->select('*');
@@ -35,17 +29,18 @@ class Job_request_model extends CI_Model
 	// 	$query = $this->db->get();
 	// 	return $query->result_array();
 	// }
+
 	public function get_data()
 	{
 		$post = $this->input->post();
 		//Filter Berdasarkan Date From
-		if (isset($post['date']) and $post['date'] !=''){
-			$conditions = array('date' => $post['date']);
-			$this->db->where($conditions);
+		if (isset($post['dateFrom']) and $post['dateFrom'] !='') {
+			$this->db->where('created_at' >= date('Y-m-d')); 
+		}else{
+			echo 'data tidak ada';
 		}
 		
-	
-		//Filter Berdasarkan Date To
+		
 		
 
 
@@ -54,6 +49,8 @@ class Job_request_model extends CI_Model
 			$conditions = array('status' => $post['status']);
 			$this->db->where($conditions);
 		}
+		// $this->output->enable_profiler();
+
 
 		$this->db->select('*');
 		$this->db->from($this->table);
