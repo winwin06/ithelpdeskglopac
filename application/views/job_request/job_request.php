@@ -18,6 +18,7 @@
         <div class="col-md-6">
             <a href="<?= site_url('job_request/create_job') ?>" class="btn btn-info mb-2"><i class="fas fa-plus-circle"></i> Create</a>
             <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#filterModal"><i class="fas fa-filter"></i> Filter</button>
+            <a href="<?= site_url('job_request') ?>" class="btn btn-info mb-2"><i class="fas fa-list-ul"></i> Clear Filter</a>
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>

@@ -11,25 +11,6 @@ class Job_request_model extends CI_Model
 		parent::__construct();
 	}
 
-	// public function get_data($dateFrom ='', $dateTo = '', $status = '')
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('job_request');
-
-	// 	// Filter berdasarkan tanggal
-	// 	if (!empty($dateFrom) && !empty($dateTo)) {
-	// 		$this->db->where('created_at >=', $dateFrom);
-	// 		$this->db->where('created_at <=', $dateTo);
-	// 	}
-	// 	// Filter berdasarkan status
-	// 	if (!empty($status)) {
-	// 		$this->db->where('status', $status);
-	// 	}
-
-	// 	$query = $this->db->get();
-	// 	return $query->result_array();
-	// }
-
 	public function get_data()
 	{
 		$post = $this->input->post();
