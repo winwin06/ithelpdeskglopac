@@ -10,6 +10,11 @@
                         <input type="hidden" name="id" value="<?= $job_request['id']; ?>">
 
                         <div class="form-group">
+                            <label for="job_title">Date</label>
+                            <input type="date" name="date" value="<?= $job_request['date']; ?>" class="form-control" id="date" placeholder="Date">
+                            <?= form_error('date', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
                             <label for="job_title">Job Title</label>
                             <input type="text" name="job_title" value="<?= $job_request['job_title']; ?>" class="form-control" id="job_title" placeholder="Job Title">
                             <?= form_error('job_title', '<small class="text-danger pl-3">', '</small>'); ?>

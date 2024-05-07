@@ -7,6 +7,11 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-md-4">Date</div>
+                        <div class="col-md-2">:</div>
+                        <div class="col-md-6"><?= $job_request['date']; ?></div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">Job Title</div>
                         <div class="col-md-2">:</div>
                         <div class="col-md-6"><?= $job_request['job_title']; ?></div>

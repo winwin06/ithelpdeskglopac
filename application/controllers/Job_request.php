@@ -32,6 +32,7 @@ class Job_request extends CI_Controller
 	{
 		$data['title'] = "Add a Job Request";
 
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
@@ -48,6 +49,7 @@ class Job_request extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$data = [
+				'date'		        => $this->input->post('date'),
 				'job_title'         => $this->input->post('job_title'),
 				'job_description'   => $this->input->post('job_description'),
 				'department'	   	=> $this->input->post('department'),
@@ -90,6 +92,7 @@ class Job_request extends CI_Controller
 		$data['job_request'] = $this->job_request_model->getJobRequestById($id);
 		$data['status'] = ['Not Started', 'On Going', 'Done'];
 
+		$this->form_validation->set_rules('date', 'Date', 'required|trim');
 		$this->form_validation->set_rules('job_title', 'Job Title', 'required|trim');
 		$this->form_validation->set_rules('job_description', 'Job Description', 'required|trim');
 		$this->form_validation->set_rules('department', 'Department', 'required|trim');
@@ -106,6 +109,7 @@ class Job_request extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$data = [
+				'date' 				=> $this->input->post('date'),
 				'job_title' 		=> $this->input->post('job_title'),
 				'job_description' 	=> $this->input->post('job_description'),
 				'department' 		=> $this->input->post('department'),
@@ -134,6 +138,7 @@ class Job_request extends CI_Controller
 					return;
 				}
 			}
+
 			$this->job_request_model->update(['id' => $id], $data);
 			$this->session->set_flashdata('flash', 'Diupdate');
 			redirect('job_request');

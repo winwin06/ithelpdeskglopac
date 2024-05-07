@@ -72,6 +72,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Date</th>
                         <th>Job Title</th>
                         <th>Job Description</th>
                         <th>Department</th>
@@ -86,6 +87,7 @@
                     <?php foreach ($job_request as $us) : ?>
                         <tr>
                             <td><?= $i; ?>.</td>
+                            <td><?= $us['date']; ?></td>
                             <td><?= $us['job_title']; ?></td>
                             <td><?= $us['job_description']; ?></td>
                             <td><?= $us['department']; ?></td>

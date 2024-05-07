@@ -9,6 +9,11 @@
 
                     <form action="<?= site_url('job_request/create_job'); ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" name="date" value="<?= set_value('date'); ?>" class="form-control" id="date" placeholder="Date">
+                            <?= form_error('date', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
                             <label for="job_title">Job Title</label>
                             <input type="text" name="job_title" value="<?= set_value('job_title'); ?>" class="form-control" id="job_title" placeholder="Job Title">
                             <?= form_error('job_title', '<small class="text-danger pl-3">', '</small>'); ?>
