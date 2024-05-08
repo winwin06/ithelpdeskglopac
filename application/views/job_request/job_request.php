@@ -19,6 +19,15 @@
             <a href="<?= site_url('job_request/create_job') ?>" class="btn btn-info mb-2"><i class="fas fa-plus-circle"></i> Create</a>
             <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#filterModal"><i class="fas fa-filter"></i> Filter</button>
             <a href="<?= site_url('job_request') ?>" class="btn btn-info mb-2"><i class="fas fa-list-ul"></i> Clear Filter</a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info mb-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class=""></i> Action
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Print</a>
+                </div>
+                </div>
+
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>
