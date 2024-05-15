@@ -19,6 +19,11 @@ class Job_request extends CI_Controller
 		// Ambil semua data jika tidak ada filter
 		$data['job_request'] = $this->job_request_model->get_data();
 
+		// Buat pesan alert dinamis
+		$current_date = date('01/F/Y'); // Format hari, bulan, dan tahun
+        $alert_message = "Info: Data from {$current_date}, use filter to load more data.";
+		$data['alert_message'] = $alert_message;
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);

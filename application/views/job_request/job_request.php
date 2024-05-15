@@ -32,6 +32,15 @@
         <?= $this->session->flashdata('message') ?>
     </div>
 
+    <!-- Tampilkan alert info -->
+    <?php if (isset($alert_message)) : ?>
+        <div class="alert" role="alert" style="background-color: #ADD8E6; color: black;">
+            <?= $alert_message; ?>
+        </div>
+    <?php endif; ?>
+
+
+
     <!-- Modal -->
     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
