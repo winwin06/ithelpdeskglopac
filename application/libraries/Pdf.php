@@ -11,28 +11,30 @@ class Pdf extends FPDF {
     // Custom Header
     function Header() {
         // Logo
-        $this->Image(base_url('assets/dist/img/logoglopac.png'), 10, 6, 30); // Path to logo file, position x=10, y=6, width=30mm
+        $this->Image(base_url('assets/dist/img/logoglopac.png'), 10, 12, 20); // Path to logo file, position x=10, y=6, width=30mm
         // Arial bold 15
-        $this->SetFont('Arial', 'B', 15);
+        $this->SetFont('Arial', 'B', 12);
+        // Move to the right
+        $this->Cell(8);
         // Title
-        $this->Cell(0, 10, 'PT Glopac Indonesia', 0, 1, 'C');
-        $this->SetFont('Arial', 'I', 12);
-        $this->Cell(0, 10, 'Jl. Jati 5 blok J4 No. 3, Newton Techno Park, Lippo Cikarang, Bekasi, Jawa Barat, Indonesia.', 0, 1, 'C');
-        $this->Cell(0, 10, 'T : +6221 8990 8169, F : +6221 8990 2247', 0, 1, 'C');
+        $this->Cell(0, 7, 'PT Glopac Indonesia', 0, 1, 'C');
+        $this->SetFont('Arial', 'I', 8);
+        $this->Cell(0, 4, 'Jl. Jati 5 blok J4 No. 3, Newton Techno Park, Lippo Cikarang, Bekasi, Jawa Barat, Indonesia.', 0, 1, 'C');
+        $this->Cell(0, 4, 'T : +6221 8990 8169, F : +6221 8990 2247', 0, 1, 'C');
         
         // Add a line break
-        $this->Ln(5);
+        $this->Ln(4);
 
         // Draw the line
         $this->Cell(0, 0, '', 'T', 1, 'C');
 
         // Move to the right
-        $this->Ln(5);
+        $this->Ln(4);
         // JOB REQUEST title
-        $this->SetFont('Arial', 'B', 14);
-        $this->Cell(0, 10, 'JOB REQUEST', 0, 1, 'C');
+        $this->SetFont('Arial', '', 14);
+        $this->Cell(0, 5, 'JOB REQUEST', 0, 1, 'C');
         // Line break
-        $this->Ln(10);
+        $this->Ln(5);
     }
 
     // Custom Footer
