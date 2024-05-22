@@ -24,7 +24,7 @@
                     <i class=""></i> Action
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= site_url('pdf_c')?>">Print</a>
+                    <a class="dropdown-item" href="<?= site_url('laporanpdf')?>">Print</a>
                 </div>
                 </div>
         </div>
