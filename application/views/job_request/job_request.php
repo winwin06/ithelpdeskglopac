@@ -27,7 +27,6 @@
                     <a class="dropdown-item" href="<?= site_url('pdf_c')?>">Print</a>
                 </div>
                 </div>
-
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>
@@ -38,8 +37,6 @@
             <?= $alert_message; ?>
         </div>
     <?php endif; ?>
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">

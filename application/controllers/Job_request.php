@@ -14,22 +14,23 @@ class Job_request extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Job Request';
-		$post = $this->input->post;
+		$post = $this->input->post();
 
-		// Ambil semua data jika tidak ada filter
-		$data['job_request'] = $this->job_request_model->get_data();
+		// Dapatkan tanggal awal bulan saat ini
+		$current_month_start = date('Y-m-01');
+		$current_date = date('01/M/Y'); // Format hari, bulan, dan tahun
+		$alert_message = "Info: Data from {$current_date}, use filter to load more data.";
+
+		// Ambil data berdasarkan filter atau dari bulan saat ini
+		$data['job_request'] = $this->job_request_model->get_data($current_month_start);
 
 		// Buat pesan alert dinamis
-		$current_date = date('01/F/Y'); // Format hari, bulan, dan tahun
-        $alert_message = "Info: Data from {$current_date}, use filter to load more data.";
 		$data['alert_message'] = $alert_message;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
 		$this->load->view('templates/footer');
-
-		// $this->output->enable_profiler();
 	}
 
 
