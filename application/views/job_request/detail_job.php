@@ -5,6 +5,7 @@
                 <div class="card-header justify-content-center">
                     Detail Job Request
                 </div>
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">Date</div>
@@ -45,6 +46,7 @@
                     </div>
                     <div class="card-footer justify-content-center">
                         <a href="<?= site_url('job_request') ?>" class="badge badge-danger float-right">Close</a>
+                        <a href="<?= site_url('laporanpdf/detail/49') ?>" class="badge badge-info float-right mr-1">Print</a>
                     </div>
                 </div>
             </div>

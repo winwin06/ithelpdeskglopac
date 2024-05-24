@@ -39,11 +39,11 @@ class Pdf extends FPDF {
 
     // Custom Footer
     function Footer() {
-        // Position at 1.5 cm from bottom
+        // Posisi 1.5 cm dari bawah
         $this->SetY(-15);
         // Arial italic 8
         $this->SetFont('Arial', 'I', 8);
-        // Page number
+        // Nomor halaman
         $this->Cell(0, 10, 'Page '.$this->PageNo().'/{nb}', 0, 0, 'C');
     }
 }
