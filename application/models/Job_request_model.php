@@ -40,7 +40,6 @@ class Job_request_model extends CI_Model
 		return $query->result_array();
 	}
 
-
 	public function getJobRequestById($id)
 	{
 		$this->db->where($this->id, $id);
@@ -74,5 +73,29 @@ class Job_request_model extends CI_Model
 	{
 		$this->db->where('id', $id);
 		return $this->db->get('job_request')->row_array();
+	}
+
+	public function get_filtered_data($dateFrom = null, $dateTo = null)
+	{
+		// Filter Berdasarkan Date From
+		if (!empty($dateFrom)) {
+			$this->db->where('date >=', $dateFrom);
+		}
+
+		// Filter Berdasarkan Date To
+		if (!empty($dateTo)) {
+			$this->db->where('date <=', $dateTo . ' 23:59:59');
+		}
+
+		// Filter Berdasarkan Status
+		// if (!empty($status)) {
+		//     $this->db->where('status', $status);
+		// }
+
+		$this->db->select('*');
+		$this->db->from($this->table);
+
+		$query = $this->db->get();
+		return $query->result();
 	}
 }

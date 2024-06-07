@@ -24,12 +24,23 @@
                     <i class=""></i> Action
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= site_url('laporanpdf')?>">Print</a>
+                    <form action="<?= site_url('laporanpdf') ?>" method="post">
+                        <input type="hidden" name="dateFrom" value="<?= isset($post['dateFrom']) ? $post['dateFrom'] : '' ?>">
+                        <input type="hidden" name="dateTo" value="<?= isset($post['dateTo']) ? $post['dateTo'] : '' ?>">
+                        <input type="hidden" name="status" value="<?= isset($post['status']) ? $post['status'] : '' ?>">
+                        <button type="submit" class="dropdown-item">Print</button>
+                    </form>
                 </div>
-                </div>
+            </div>
         </div>
         <?= $this->session->flashdata('message') ?>
     </div>
+
+    <?php
+    // $post = $this->input->post();
+    // var_dump($post['status']);
+    // die;
+    ?>
 
     <!-- Tampilkan alert info -->
     <?php if (isset($alert_message)) : ?>

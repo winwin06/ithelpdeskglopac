@@ -27,12 +27,14 @@ class Job_request extends CI_Controller
 		// Buat pesan alert dinamis
 		$data['alert_message'] = $alert_message;
 
+		// Data Post
+		$data['post'] = $this->input->post();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('job_request/job_request', $data);
 		$this->load->view('templates/footer');
 	}
-
 
 	public function create_job()
 	{
@@ -189,6 +191,17 @@ class Job_request extends CI_Controller
 	{
 		$data['title'] 	= 'Job Request History';
 		$data['job_request'] = $this->job_request_model->get_all_job_request();
+
+		// Dapatkan tanggal awal bulan saat ini
+		// $current_month_start = date('Y-m-01');
+		// $current_date = date('01/M/Y'); // Format hari, bulan, dan tahun
+		// $alert_message = "Info: Data from {$current_date}, use filter to load more data.";
+
+		// Ambil data berdasarkan filter atau dari bulan saat ini
+		// $data['job_request'] = $this->job_request_model->get_data($current_month_start);
+
+		// Buat pesan alert dinamis
+		// $data['alert_message'] = $alert_message;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

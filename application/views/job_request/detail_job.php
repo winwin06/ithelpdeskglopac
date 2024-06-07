@@ -46,7 +46,7 @@
                     </div>
                     <div class="card-footer justify-content-center">
                         <a href="<?= site_url('job_request') ?>" class="badge badge-danger float-right">Close</a>
-                        <a href="<?= site_url('laporanpdf/detail/49') ?>" class="badge badge-info float-right mr-1">Print</a>
+                        <!-- <a href="<?= site_url('laporanpdf/detail/49') ?>" class="badge badge-info float-right mr-1">Print</a> -->
                     </div>
                 </div>
             </div>

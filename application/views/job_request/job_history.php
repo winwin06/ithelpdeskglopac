@@ -1,8 +1,16 @@
 <div class="container-fluid">
+    <!-- Tampilkan alert info -->
+    <!-- <?php if (isset($alert_message)) : ?>
+        <div class="alert" role="alert" style="background-color: #ADD8E6; color: black; margin-bottom: 20px;">
+            <?= $alert_message; ?>
+        </div>
+    <?php endif; ?> -->
+
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Job Request History</h3>
+            <h3 class="card-title">Notifications</h3>
         </div>
+
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                 <thead>

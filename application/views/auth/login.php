@@ -7,7 +7,8 @@
         <div class="card-login">
             <div class="card">
                 <div class="card-body login-card-body">
-                    <p class="login-box-msg">Sign in Now!!</p>
+                <img src="<?= base_url('assets/dist/img/profile/glopac_logo.png') ?>" alt="Glopac Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 20px;">
+                <p class="login-box-msg" style="color: black; font-weight: bold;">Sign in Now!!</p>
 
                     <?= $this->session->flashdata('message'); ?>
 
