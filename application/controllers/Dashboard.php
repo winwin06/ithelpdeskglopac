@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller
         $data['title']         = 'Dashboard';
         $data['total_job']     = $this->dashboard_model->total_job();
         $data['total_user']    = $this->dashboard_model->total_user();
-        $data['job_requests']  = $this->dashboard_model->get_job_requests();
+        $data['job_request']   = $this->dashboard_model->get_job_requests();
 
         // Hitung jumlah status job
         $data['not_started']   = $this->dashboard_model->count_status_job('Not Started');

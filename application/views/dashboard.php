@@ -52,13 +52,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-chart-pie mr-1"></i>
+                            <i class="fas fa-chart-line mr-1"></i>
                             Area Chart
                         </h3>
                     </div>
                     <div class="card-body">
                         <div class="chart" style="position: relative; height: 300px;">
-                            <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                             <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
                         </div>
                     </div>
                 </div>
@@ -101,22 +101,27 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            // Data untuk Area Chart
-            const areaChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            const areaChartData = {
-                labels: areaChartLabels,
-                datasets: [{
-                    label: 'Jobs',
-                    backgroundColor: 'rgba(60,141,188,0.9)',
-                    borderColor: 'rgba(60,141,188,0.8)',
-                    pointRadius: false,
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: 'rgba(60,141,188,1)',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data: <?= json_encode(array_column($job_requests, 'job_count'), JSON_NUMERIC_CHECK) ?>
-                }]
-            };
+        // Data untuk Area Chart
+        const areaChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        
+        // Pastikan data job_request tersedia dan memiliki format yang benar
+        const jobRequestData = <?= json_encode(array_column($job_request, 'job_count'), JSON_NUMERIC_CHECK) ?>;
+        
+        // Data untuk Area Chart
+        const areaChartData = {
+            labels: areaChartLabels,
+            datasets: [{
+                label: 'Jobs',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: jobRequestData
+            }]
+        };
 
             // Data untuk Donut Chart
             const donutChartData = {
@@ -127,7 +132,7 @@
                 }]
             };
 
-            // Inisialisasi Area Chart
+            /// Inisialisasi Area Chart
             const areaChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
             const areaChart = new Chart(areaChartCanvas, {
                 type: 'line',

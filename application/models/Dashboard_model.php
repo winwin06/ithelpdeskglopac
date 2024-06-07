@@ -13,10 +13,18 @@ class Dashboard_model extends CI_Model
         return $this->db->get('user')->num_rows();
     } 
 
-    public function get_job_requests() 
+    // public function get_job_requests() 
+    // {
+    //     return $this->db->get('job_request')->result_array();
+    // }
+
+    public function get_job_requests()
     {
-        return $this->db->get('job_request')->result_array();
-    }
+        $this->db->select('MONTH(created_at) as month, COUNT(*) as job_count');
+        $this->db->group_by('MONTH(created_at)');
+        $query = $this->db->get('job_request');
+        return $query->result_array();
+    }   
 
     public function count_status_job($status) 
     {
