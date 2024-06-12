@@ -44,13 +44,43 @@ class Laporanpdf extends CI_Controller
 
         $i = 1;
         foreach ($job_request as $job) {
-            $pdf->Cell(8, 5, $i++, 1, 0, 'C');
-            $pdf->Cell(18, 5, $job->date, 1, 0, 'C');
-            $pdf->Cell(35, 5, $job->job_title, 1, 0);
-            $pdf->Cell(72, 5, $job->job_description, 1, 0);
-            $pdf->Cell(25, 5, $job->department, 1, 0);
-            $pdf->Cell(12, 5, $job->notes, 1, 0);
-            $pdf->Cell(20, 5, $job->status, 1, 1, 'C');
+            // Tentukan tinggi maksimum dari setiap kolom dalam satu baris
+            $titleHeight = $pdf->GetMultiCellHeight(35, 5, $job->job_title);
+            $descHeight = $pdf->GetMultiCellHeight(72, 5, $job->job_description);
+            $deptHeight = $pdf->GetMultiCellHeight(25, 5, $job->department);
+            $notesHeight = $pdf->GetMultiCellHeight(12, 5, $job->notes);
+            $maxHeight = max($titleHeight, $descHeight, $deptHeight, $notesHeight, 5);
+
+            // Cetak setiap sel
+            $pdf->Cell(8, $maxHeight, $i++, 1, 0, 'C');
+            $pdf->Cell(18, $maxHeight, $job->date, 1, 0, 'C');
+
+            // Job Title
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->MultiCell(35, $maxHeight, $job->job_title, 1);
+            $pdf->SetXY($x + 35, $y);
+
+            // Job Description
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->MultiCell(72, $maxHeight, $job->job_description, 1);
+            $pdf->SetXY($x + 72, $y);
+
+            // Department
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->MultiCell(25, $maxHeight, $job->department, 1);
+            $pdf->SetXY($x + 25, $y);
+
+            // Notes
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->MultiCell(12, 5, $job->notes, 1);
+            $pdf->SetXY($x + 12, $y);
+
+            // Status
+            $pdf->Cell(20, $maxHeight, $job->status, 1, 1, 'C');
         }
 
         $pdf->Output();

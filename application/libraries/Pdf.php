@@ -46,4 +46,62 @@ class Pdf extends FPDF {
         // Nomor halaman
         $this->Cell(0, 10, 'Page '.$this->PageNo().'/{nb}', 0, 0, 'C');
     }
+
+    // Extend FPDF class and add a new method to calculate the height of MultiCell
+    function GetMultiCellHeight($w, $h, $txt)
+    {
+        // Compute the number of lines needed to display the text
+        $cw = &$this->CurrentFont['cw'];
+        if ($w == 0) {
+            $w = $this->w - $this->rMargin - $this->x;
+        }
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if ($nb > 0 and $s[$nb - 1] == "\n") {
+            $nb--;
+        }
+        $sep = -1;
+        $i = 0;
+        $j = 0;
+        $l = 0;
+        $ns = 0;
+        $height = 0;
+        while ($i < $nb) {
+            $c = $s[$i];
+            if ($c == "\n") {
+                $height += $h;
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $ns = 0;
+                continue;
+            }
+            if ($c == ' ') {
+                $sep = $i;
+                $ls = $l;
+                $ns++;
+            }
+            $l += $cw[$c];
+            if ($l > $wmax) {
+                if ($sep == -1) {
+                    if ($i == $j) {
+                        $i++;
+                    }
+                } else {
+                    $i = $sep + 1;
+                }
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $ns = 0;
+                $height += $h;
+            } else {
+                $i++;
+            }
+        }
+        $height += $h;
+        return $height;
+    }
 }

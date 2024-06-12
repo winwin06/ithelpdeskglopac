@@ -190,7 +190,7 @@ class Job_request extends CI_Controller
 	public function job_history()
 	{
 		$data['title'] 	= 'Job Request History';
-		$data['job_request'] = $this->job_request_model->get_all_job_request();
+		$data['job_request'] = $this->job_request_model->get_done_job_request();
 
 		// Dapatkan tanggal awal bulan saat ini
 		// $current_month_start = date('Y-m-01');

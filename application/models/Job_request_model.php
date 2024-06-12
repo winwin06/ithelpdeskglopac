@@ -64,8 +64,9 @@ class Job_request_model extends CI_Model
 		$this->db->delete('job_request');
 	}
 
-	public function get_all_job_request()
+	public function get_done_job_request()
 	{
+		$this->db->where('status', 'Done');
 		return $this->db->get('job_request')->result_array();
 	}
 
