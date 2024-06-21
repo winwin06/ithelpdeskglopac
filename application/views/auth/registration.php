@@ -5,6 +5,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
+        <img src="<?= base_url('assets/dist/img/profile/glopac_logo.png') ?>" alt="Glopac Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 20px;">
             <p class="login-box-msg">Create an Account</p>
 
             <form class="user" method="post" action="<?= site_url('auth/registration') ?>">

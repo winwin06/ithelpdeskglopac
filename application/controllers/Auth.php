@@ -108,7 +108,7 @@ class Auth extends CI_Controller
 			redirect('');
 		}
 
-		$this->output->enable_profiler();
+		// $this->output->enable_profiler();
 	}
 
 
