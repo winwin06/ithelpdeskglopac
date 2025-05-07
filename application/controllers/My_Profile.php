@@ -12,9 +12,11 @@ class My_Profile extends CI_Controller
     
 	public function index()
 	{
-
+		// Ambil data user yang sedang login
         $data['user']	= $this->userrole->getBy();
         $data['title']	 = 'My Profile';
+
+		// Load tampilan profil
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('my_profile', $data);

@@ -17,15 +17,16 @@ class Login_c extends CI_Controller
         $email    = $post['email'];
         $password = $post['password'];
 
-        // Periksa apakah email dan password tidak kosong
+        // Pastikan email dan password telah diisi
         if (!empty($email) && !empty($password)) {
             // Periksa login menggunakan model user
             $count = $this->user->count_record($email, $password);
 
             if ($count != 0) {
+                // Ambil data user dari database berdasarkan email
                 $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
-                // Set session data
+                // Simpan data user ke dalam session
                 $data = [
                     'email' => $user['email'],
                     'role'  => $user['role']
@@ -38,12 +39,12 @@ class Login_c extends CI_Controller
                 } else if ($user['role'] == 'admin') {
                     redirect('dashboard');
                 } else {
-                    // Jika peran tidak didefinisikan, tampilkan pesan kesalahan
+                    // Jika role tidak dikenali
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid user role!</div>');
                     redirect('');
                 }
             } else {
-                // Login gagal, tampilkan pesan kesalahan
+                // Login gagal
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Invalid email or password!</div>');
                 redirect('');
             }
@@ -52,6 +53,8 @@ class Login_c extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email and password are required!</div>');
             redirect('');
         }
+
+        // Aktifkan profiler untuk debugging 
         $this->output->enable_profiler();
     }
     
