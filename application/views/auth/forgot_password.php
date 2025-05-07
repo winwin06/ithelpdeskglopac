@@ -18,8 +18,6 @@
                             <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                         </div>
 
-
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
                         </div>

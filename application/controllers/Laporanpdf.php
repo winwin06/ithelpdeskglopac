@@ -84,5 +84,6 @@ class Laporanpdf extends CI_Controller
         }
 
         $pdf->Output();
+
     }
 }

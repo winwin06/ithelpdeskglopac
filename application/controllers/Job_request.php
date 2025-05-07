@@ -180,7 +180,6 @@ class Job_request extends CI_Controller
 	{
 		$job_request = $this->job_request_model->get_job_by_id($id);
 
-		// Cek role pengguna
 		if ($this->session->userdata("role") == "admin") {
 			// Jika role adalah admin, izinkan penghapusan tanpa memperdulikan status
 			$this->job_request_model->delete($id);

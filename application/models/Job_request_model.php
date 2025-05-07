@@ -11,6 +11,14 @@ class Job_request_model extends CI_Model
 		parent::__construct();
 	}
 
+	// Cretae
+	public function insert($data)
+	{
+		$this->db->insert($this->table, $data);
+		return $this->db->insert_id();
+	}
+
+	// Read
 	public function get_data($current_month_start = null)
 	{
 		$post = $this->input->post();
@@ -44,24 +52,6 @@ class Job_request_model extends CI_Model
 	{
 		$this->db->where($this->id, $id);
 		return $this->db->get($this->table)->row_array();
-	}
-
-	public function insert($data)
-	{
-		$this->db->insert($this->table, $data);
-		return $this->db->insert_id();
-	}
-
-	public function update($where, $data)
-	{
-		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('job_request', $data, $where);
-	}
-
-	public function delete($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete('job_request');
 	}
 
 	public function get_done_job_request()
@@ -98,4 +88,20 @@ class Job_request_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	// Update
+	public function update($where, $data)
+	{
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('job_request', $data, $where);
+	}
+
+	// Delete
+	public function delete($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('job_request');
+	}
+
+	
 }
