@@ -6,11 +6,9 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		// Load library validasi form
+		// Load library validasi form, job_request dan user
 		$this->load->library('form_validation');
-		// Load model untuk permintaan kerja
 		$this->load->model('job_request_model');
-		// Load model user dan alias userrole
 		$this->load->model('user', 'userrole');
 	}
 

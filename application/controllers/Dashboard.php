@@ -6,12 +6,8 @@ class Dashboard extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-
-        // Load library form_validation untuk validasi form
 		$this->load->library('form_validation');
-        // Load model 'user' dan beri alias 'userrole'
 		$this->load->model('user', 'userrole');
-        // Load model dashboard_model untuk pengolahan data dashboard
 		$this->load->model('dashboard_model');
 	}
 
