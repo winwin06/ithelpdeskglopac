@@ -9,6 +9,8 @@ class Job_request extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('job_request_model');
+		$this->load->library('unit_test');
+
 	}
 
 	public function index()
@@ -207,4 +209,39 @@ class Job_request extends CI_Controller
 		$this->load->view('job_request/job_history');
 		$this->load->view('templates/footer');
 	}
+
+	// Unit Test
+	public function test_get_job_by_id($id = null)
+	{
+		// Gunakan ID dari parameter jika ada, kalau tidak pakai 40 sebagai default
+		$id = $id ?? 40;
+
+		$test_result = $this->job_request_model->getJobRequestById($id);
+
+		if ($test_result === null) {
+			echo "Job Request dengan ID $id tidak ditemukan.<br>";
+			return;
+		}
+
+		$expected_result = [
+			'id'                => $id,
+			'date'             => $test_result['date'],
+			'job_title'        => $test_result['job_title'],
+			'job_description'  => $test_result['job_description'],
+			'department'       => $test_result['department'],
+			'notes'            => $test_result['notes'],
+			'status'           => $test_result['status'],
+			'created_at'       => $test_result['created_at']
+		];
+
+		echo $this->unit->run($test_result['id'], $expected_result['id'], 'Unit Test');
+		echo $this->unit->run($test_result['date'], $expected_result['date'], 'Test Date');
+		echo $this->unit->run($test_result['job_title'], $expected_result['job_title'], 'Test Job Title');
+		echo $this->unit->run($test_result['job_description'], $expected_result['job_description'], 'Test Job Description');
+		echo $this->unit->run($test_result['department'], $expected_result['department'], 'Test Department');
+		echo $this->unit->run($test_result['notes'], $expected_result['notes'], 'Test Notes');
+		echo $this->unit->run($test_result['status'], $expected_result['status'], 'Test Status');
+		echo $this->unit->run($test_result['created_at'], $expected_result['created_at'], 'Test Created At');
+	}
+
 }
